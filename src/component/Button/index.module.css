@@ -1,0 +1,17 @@
+.btn {
+    font-weight: 600;
+    font-size: 25px;
+    border: 0;
+    border-radius: 15px;
+    border: 1px solid var(--color-blue-2);
+    color: var(--color-blue-2);
+    padding: 20px 58px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background: none;
+    transition: .3s ease;
+}
+.btn:hover {
+    background-color: var(--color-blue-2);
+    color: var(--color-white);
+}

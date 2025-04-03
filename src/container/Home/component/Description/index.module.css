@@ -1,0 +1,64 @@
+.container {
+    width: 100%;
+    display: flex;
+    margin-bottom: 120px;
+}
+/* 오른쪽 정렬 */
+.container.right {
+    flex-direction: row-reverse;
+}
+.container.right .text_area {
+    text-align: right;
+}
+.container.right .text_area .contents {
+    float: right;
+}
+.container.right .image_area {
+    justify-content: flex-start;
+}
+
+.container .text_area {
+    flex: 1;
+}
+.container .text_area .contents .tag {
+    display: inline-block;
+    padding: 5px 18px;
+    border-radius: 100px;
+    color: var(--color-blue-0);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    background-color: var(--color-blue-0-opacity-20);
+    margin-bottom: 24px;
+}
+.container .text_area .contents .title {
+    color: var(--color-blue-2);
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 16px;
+}
+.container .text_area .contents .description {
+    color: var(--color-blue-2);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 140%;
+    margin-bottom: 20px;
+    width: 300px;
+}
+.container .image_area {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+.container .image_area .image_container {
+    display: inline-block;
+    width: 90%;
+    box-sizing: border-box;
+    padding: 14px;
+    background-color: var(--color-white-opacity-50);
+    border-radius: 14px;
+    border: 1px solid var(--color-white);
+}
+.container .image_area .image_container img {
+    width: 100%;
+}

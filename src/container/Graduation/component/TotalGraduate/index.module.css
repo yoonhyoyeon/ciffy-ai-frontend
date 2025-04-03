@@ -1,0 +1,84 @@
+.container {
+    display: flex;
+    width: 100%;
+    background: var(--color-blue-1-opacity-10);
+    border-radius: 20px;
+    margin-top: 20px;
+    padding: 40px 10%;
+    box-sizing: border-box;
+}
+.container .leftArea {
+    display: flex;
+    flex-direction: column;
+    flex: 1.5;
+    height: 300px;
+    justify-content: space-between;
+}
+.container .leftArea h1 {
+    color: var(--color-blue-3);
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+.container .leftArea h3 {
+    color: var(--color-blue-4-opacity-80);
+    font-size: 22px;
+    font-weight: 600;
+    margin: 20px 0;
+}
+.container .leftArea h3 span {
+    color: var(--color-blue-4);
+    margin-left: 30px;
+}
+.container .leftArea Button {
+    display: inline-block;
+}
+.container .rightArea {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container .rightArea .CountUp {
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--color-blue-4);
+}
+.container .rightArea span {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-blue-4);
+}
+@media screen and (max-width:1023px) {
+    .container .rightArea {
+        width: 240px;
+    }
+    .container .leftArea Button {
+        padding-left: 30px!important;
+        padding-right: 30px!important;
+    }
+}
+@media screen and (max-width:700px) {
+    .container .rightArea {
+        width: 160px;
+    }
+    .container .rightArea .CountUp {
+        font-size: 28px;
+    }
+    .container .rightArea span {
+        font-size: 24px;
+    }
+    .container .leftArea Button {
+        font-size: 18px!important;
+    }
+}
+@media screen and (max-width:550px) {
+    .container {
+        flex-direction: column-reverse;
+        align-items: center;
+        text-align: center;
+    }
+    .container .rightArea {
+        margin-bottom: 10px;
+    }
+}
