@@ -1,0 +1,11 @@
+.down_arrow {
+    width: 30px;
+    position: absolute;
+    bottom: 30px;
+    left: calc(50% - 15px);
+    cursor: pointer;
+    transition: .3s ease;
+}
+.down_arrow:hover {
+    transform: translateY(30%);
+}

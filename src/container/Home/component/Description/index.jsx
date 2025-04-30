@@ -12,7 +12,7 @@ const Description = ({type, tag, title, description, btn, image}) => {
                     <div className={styles.title}>{title}</div>
                     <div className={styles.description}>{description}</div>
                     <Link href={btn.link}>
-                        <Button size="small">{btn.text}</Button>
+                        <Button size="medium">{btn.text}</Button>
                     </Link>
                 </div>
             </div>

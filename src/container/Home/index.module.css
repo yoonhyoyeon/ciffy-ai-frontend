@@ -57,12 +57,14 @@
 .container .intro_area .contents button {
     margin: 0 auto;
 }
+
 .container .description_area {
     width: 80%;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     box-sizing: border-box;
+    padding-top: 160px;
 } 
 
 @media screen and (max-width: 850px) {

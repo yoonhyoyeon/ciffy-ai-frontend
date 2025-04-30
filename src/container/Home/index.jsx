@@ -1,6 +1,7 @@
 import styles from './index.module.css';
 import TypedText from "./component/TypedText";
 import Description from "./component/Description";
+import DownArrow from "./component/DownArrow";
 
 const Home = () => {
     return (
@@ -9,10 +10,11 @@ const Home = () => {
             <div className={styles.contents}>
                 <h2>귀찮았던 시간표 짜기는 이제 안녕 👋🏻</h2>
                 <div className={styles.typed_container}>
-                    <TypedText string="<h1>시간표의 새 패러다임, <span>시피</span>를 소개합니다</h1>" />
+                    <TypedText string="<h1>시간표의 새 패러다임, <span>시피</span>를 시작하세요</h1>" />
                 </div>
                 <img src="/images/timetable.png" />
             </div>
+            <DownArrow />
         </div>
         <div className={styles.description_area}>
             <Description

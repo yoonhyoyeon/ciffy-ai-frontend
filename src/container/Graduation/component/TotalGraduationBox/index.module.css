@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #FFF;
+    border-radius: 14px;
+    background-color: var(--color-white-opacity-40);
+    padding: 40px 20%;
+    box-sizing: border-box;
+}
+
+.container .progress_bar_wrap {
+   margin-bottom: 30px;
+}
+.container .text_wrap h1 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-blue-2);
+    margin-bottom: 32px;
+}
+.container .text_wrap h3 {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 14px;
+}
+.container .text_wrap h3 span {
+    color: var(--color-blue-2-opacity-50);
+}
+.container .text_wrap h3 span.active {
+    color: var(--color-blue-2);
+}
