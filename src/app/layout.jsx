@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import "@/styles/variable.css";
+import 'react-circular-progressbar/dist/styles.css';
 import Navigation from '@/component/Navigation';
 
 export const metadata = {

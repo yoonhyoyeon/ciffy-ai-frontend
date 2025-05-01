@@ -6,7 +6,7 @@ import Button from '@/component/Button';
 
 const Graduation = () => {
   const data = {
-    total: { current: 145 ,total: 140 },
+    total: { current: 100 ,total: 140 },
     requirements: [
       {
         title: '전공',
