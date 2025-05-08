@@ -7,7 +7,7 @@ const ProgressBar = ({value, max, barColor='var(--color-blue-1-opacity-50)', bar
     const activeBarColor = 'var(--color-blue-1)';
     useEffect(() => {
         setProgress(value/max*100);
-    }, []);
+    }, [value, max]);
     return (
         <div 
             className={styles.progress_bg}

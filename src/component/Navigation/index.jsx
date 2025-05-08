@@ -35,7 +35,7 @@ const Navigation = () => {
         <div className={cx(styles.container, { [styles.opened]: mobile_opened }, { [styles.background_white]: background })}>
             { mobile_opened ? <div onClick={() => setMobile_opened((prev)=>!prev)} className={styles.mobile_background}></div> : null}
             <div className={styles.mobile_navbar}>
-                <Link href="/"><img onClick={closeNavbar} className={styles.logo} src="/images/logo.png" /></Link>
+                <Link href="/"><img onClick={closeNavbar} className={styles.logo} src="/images/img_logo.png" /></Link>
                 <div
                     className={cx(styles.menu_btn, { [styles.opened]: mobile_opened })} 
                     onClick={() => setMobile_opened((prev)=>!prev)}
@@ -45,9 +45,9 @@ const Navigation = () => {
                     <div className={styles.bar3}></div>
                 </div>
             </div>
-            <Link href="/"><img className={styles.logo} src="/images/logo.png" /></Link>
+            <Link href="/"><img className={styles.logo} src="/images/img_logo.png" /></Link>
             <ul className={styles.navlist}>
-                <Link onClick={() => setMobile_opened((prev)=>!prev)} href="/timetable/create/survey"><li className={path.startsWith('/timetable/create')?styles.active:null}>시간표짜기</li></Link>
+                <Link onClick={() => setMobile_opened((prev)=>!prev)} href="/timetable/create"><li className={path.startsWith('/timetable/create')?styles.active:null}>시간표짜기</li></Link>
                 <Link onClick={() => setMobile_opened((prev)=>!prev)} href="/lecture?keyword="><li className={path.startsWith('/lecture')?styles.active:null}>강의후기</li></Link>
                 <Link onClick={() => setMobile_opened((prev)=>!prev)} href="/graduation"><li className={path.startsWith('/graduation')?styles.active:null}>졸업요건분석</li></Link>
             </ul>

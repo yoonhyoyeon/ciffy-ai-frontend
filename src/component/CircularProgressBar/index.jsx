@@ -19,7 +19,7 @@ const CircularProgressBar = ({ value, max, strokeWidth = 5 }) => {
         strokeWidth={strokeWidth}
         styles={buildStyles({
           pathColor: value >= max ? 'var(--color-blue-1)' : 'var(--color-blue-1-opacity-50)',
-          trailColor: 'var(--color-bg)',
+          trailColor: 'var(--color-blue-2-opacity-5)',
           textColor: 'var(--color-blue-2)',
           // CSS 기반 애니메이션 설정: stroke-dashoffset 전환
           pathTransition: 'stroke-dashoffset 1.4s ease-in-out'

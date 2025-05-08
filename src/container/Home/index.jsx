@@ -12,7 +12,7 @@ const Home = () => {
                 <div className={styles.typed_container}>
                     <TypedText string="<h1>시간표의 새 패러다임, <span>시피</span>를 시작하세요</h1>" />
                 </div>
-                <img src="/images/timetable.png" />
+                <img src="/images/img_timetable.png" />
             </div>
             <DownArrow />
         </div>
