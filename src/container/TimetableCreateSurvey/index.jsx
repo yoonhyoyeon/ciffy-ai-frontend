@@ -5,14 +5,13 @@ import NavigationButtons from "./component/NavigationButtons";
 import styles from './index.module.css';
 import { useState } from "react";
 import { FormQ1, FormQ2, FormQ3, FormQ4, FormQ5, FormQ6, FormQ7, FormQ8, FormQ9, FormQ10 } from "./component/QuestionForms";
+import { useNavigationGuard } from "next-navigation-guard";
 
 export default function TimetableCreateSurvey() {
+    useNavigationGuard({ confirm: () => window.confirm("페이지를 떠나시겠습니까?\n변경사항이 저장되지 않았습니다.") });
     const [question_index, setQuestionIndex] = useState(0);
     const [answer, setAnswer] = useState({
-        'batch_courses': [{
-            course_name: "",
-            section: ""
-        }],
+        'batch_courses': [],
         'unavailable_times': [
             // {
             //     id: 1,
@@ -21,20 +20,14 @@ export default function TimetableCreateSurvey() {
             //     end: ""
             // }
         ],
-        'required_courses': [{
-            course_name: "",
-            professor: ""
-        }],
+        'required_courses': [],
         'major_requirement_count': 0,
-        'preferred_major_courses': [{
-            course_name: "",
-            professor: ""
-        }],
-        'preferred_assignment_count': 0, // -1, 0, 1 숫자 코드(enum)
-        'preferred_attendance_check_method': 0, // -1, 0, 1 숫자 코드(enum)
-        'preferred_exam_count': 0, // -1, 0, 1 숫자 코드(enum)  
-        'preferred_team_project_count': 0, // -1, 0, 1 숫자 코드(enum)
-        'preferred_professors': ['한동일']
+        'preferred_major_courses': [],
+        'preferred_assignment_count': 0, // 0, 1, 2 숫자 코드(enum)
+        'preferred_attendance_check_method': 0, // 0, 1, 2 숫자 코드(enum)
+        'preferred_exam_count': 0, // 0, 1, 2 숫자 코드(enum)  
+        'preferred_team_project_count': 0, // 0, 1, 2 숫자 코드(enum)
+        'preferred_professors': [{name: '한동일', major: '컴퓨터공학과'}, {name: '이동현', major: '컴퓨터공학과'}, {name: '김영호', major: '컴퓨터공학과'}]
     });
     const questions = [
         {

@@ -48,6 +48,7 @@
     --color-navlist-bg: #DEDADE;
     
     --color-opacity-0: rgba(0,0,0,0);
+    --color-opacity-20: rgba(0,0,0,0.2);
     --color-opacity-30: rgba(0,0,0,0.3);
 
     --color-white: #ffffff;
@@ -56,6 +57,7 @@
 
 
     --color-blue-0: #6178FA;
+    --color-blue-0-opacity-10: rgba(97,120, 250, 0.1);
     --color-blue-0-opacity-20: rgba(97,120, 250, 0.2);
     --color-blue-1: #160095;
     --color-blue-1-opacity-50: rgba(22, 0, 149, 0.5);

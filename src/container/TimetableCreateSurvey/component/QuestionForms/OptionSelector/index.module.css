@@ -1,0 +1,49 @@
+.container [type="radio"], .container span {
+    vertical-align: middle;
+}
+
+.container [type="radio"] {
+    appearance: none;
+    border: 2px solid var(--color-white);
+    background-color: var(--color-white);
+    border-radius: 50%;
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px; 
+    transition: background-color 0.3s ease;
+}
+
+.container [type="radio"]:checked {
+    background-color: var(--color-blue-0);
+}
+
+.container [type="radio"]:hover {
+    box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+    cursor: pointer;
+}
+
+.container [type="radio"]:hover + span {
+    cursor: pointer;
+}
+
+.container [type="radio"]:disabled {
+    background-color: lightgray;
+    box-shadow: none;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.container [type="radio"]:disabled + span {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.container .label span {
+    margin-left: 14px;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--color-blue-2);
+}
+.container .label {
+    margin: 24px;
+}

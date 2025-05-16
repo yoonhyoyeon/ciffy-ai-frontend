@@ -10,6 +10,7 @@ const SurveyProgressBar = ({ index, max }) => {
                 max={max} 
                 barColor="var(--color-blue-2)" 
                 barHeight={4}
+                delay={0.6}
             />
             <span>{Math.round(index / max * 100)}%</span>
         </div>

@@ -1,9 +1,9 @@
 import styles from './index.module.css';
 import { useState, useEffect } from 'react';
 
-const CourseInputRow = ({ value, setRows, onRemove }) => {
+const CourseInputRow = ({ value, setRows, onRemove, subdata_option }) => {
     const [courseName, setCourseName] = useState(value.course_name || '');
-    const [subdata, setSubdata] = useState(value.subdata || '');
+    const [subdata, setSubdata] = useState(value[subdata_option] || '');
 
     // useEffect(() => {
     //     setRows(prevRows => prevRows.map(row =>
@@ -16,7 +16,7 @@ const CourseInputRow = ({ value, setRows, onRemove }) => {
     const Submit = () => {
         setRows(prevRows => prevRows.map(row =>
             row.id === value.id
-                ? { ...row, course_name: courseName, subdata }
+                ? { ...row, course_name: courseName, [subdata_option]: subdata }
                 : row
         ));
     }
@@ -34,7 +34,7 @@ const CourseInputRow = ({ value, setRows, onRemove }) => {
         <div className={styles.input_row}>
             <input placeholder="강의명을 입력하세요" type="text" name="courseName" value={courseName} onChange={handleChange} />
             <input placeholder="선택" type="text" name="subdata" value={subdata} onChange={handleChange} />
-            <button className={styles.remove_button} onClick={onRemove}><img src="/images/icon_x.png" alt="X" /></button>
+            <button className={styles.remove_button} onClick={Submit}><img src="/images/icon_x.png" alt="X" /></button>
         </div>
     );
 }

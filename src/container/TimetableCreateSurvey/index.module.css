@@ -14,3 +14,33 @@
     font-size: 14px;
     font-weight: 600;
 }
+.container .navigation_buttons {
+    width: 400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+.container .navigation_buttons .prev_button {
+    flex: 1;
+    height: 44px;
+    background-color: var(--color-blue-2-opacity-20);
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 0;
+    margin-right: 12px;
+}
+.container .navigation_buttons .next_button {
+    flex: 2;
+    height: 44px;
+    background-color: var(--color-blue-2);
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 0;
+}

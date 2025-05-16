@@ -1,4 +1,4 @@
-import CourseSearchSelect, { SUBDATA_TYPE } from "@/component/CourseSearchSelect";
+import CourseSearchSelect, { SUBDATA_TYPE } from "./CourseSearchSelect";
 
 const FormQ1 = ({question_id, answer, setAnswer}) => {
     return (

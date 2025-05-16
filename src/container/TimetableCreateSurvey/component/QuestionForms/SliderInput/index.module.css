@@ -1,0 +1,94 @@
+.wrapper {
+  width: 50%;
+  background: #F7F5F3;
+  padding: 24px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  outline: none;
+  margin-bottom: 16px;
+  appearance: none;
+  position: relative;
+  background: var(--color-blue-0-opacity-10); /* 기본 배경 */
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+/* Webkit (크롬, 사파리) */
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  margin-top: -5px;
+  box-shadow: 0 4px 16px var(--color-opacity-20);
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+.slider:focus::-webkit-slider-thumb {
+  box-shadow: 0 4px 16px var(--color-opacity-30);
+}
+.slider::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: 4px;
+  background: transparent;
+}
+
+/* Firefox */
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(90,107,255,0.10);
+  cursor: pointer;
+}
+.slider::-moz-range-track {
+  height: 8px;
+  border-radius: 4px;
+  background: transparent;
+}
+
+/* IE */
+.slider::-ms-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #5A6BFF;
+  box-shadow: 0 4px 16px rgba(90,107,255,0.10);
+  cursor: pointer;
+}
+.slider::-ms-fill-lower {
+  background: #5A6BFF;
+  border-radius: 4px;
+}
+.slider::-ms-fill-upper {
+  background: #EEF0F6;
+  border-radius: 4px;
+}
+
+.slider:focus {
+  outline: none;
+}
+
+.labels {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  box-sizing: border-box;
+}
+
+.label {
+  color: #222;
+  font-size: 12px;
+  font-weight: 600;
+}

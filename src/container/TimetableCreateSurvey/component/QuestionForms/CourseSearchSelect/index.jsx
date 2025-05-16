@@ -22,19 +22,20 @@ const generatedId = () => {
 }
 
 const CourseSearchSelect = ({subdata_option=SUBDATA_TYPE.SECTION, answer, setAnswer, question_id}) => {
-    const [rows, setRows] = useState([
+    const [rows, setRows] = useState(() => answer[question_id].length > 0 ? answer[question_id] : [
         {
             id: generatedId(),
             course_name: "",
-            subdata: ""
+            [subdata_option]: ""
         }
     ]);
     useEffect(() => {
         setAnswer((prev) => ({
             ...prev,
             [question_id]: rows.map(row => row.course_name && row.course_name.trim() !== '' ? {
+                id: row.id,
                 course_name: row.course_name,
-                [subdata_option]: row.subdata
+                [subdata_option]: row[subdata_option]
             } : null).filter(Boolean)
         }));
     }, [rows]);
@@ -46,26 +47,29 @@ const CourseSearchSelect = ({subdata_option=SUBDATA_TYPE.SECTION, answer, setAns
         setRows([...rows, {
             id: generatedId(),
             course_name: "",
-            subdata: ""
+            [subdata_option]: ""
         }]);
     };
     
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <span>강의명</span>
-                <span>{subdataOptions[subdata_option].title}</span>
+                <div className={styles.header_item}>강의명</div>
+                <div className={styles.header_item}>{subdataOptions[subdata_option].title}</div>
                 <div className={styles.space}></div>
             </div>
-            {rows.map((row, idx) => (
-                <CourseInputRow
-                    key={row.id}
-                    idx={idx}
-                    value={row}
-                    setRows={setRows}
-                    onRemove={() => handleRemove(row.id)}
-                />
-            ))}
+            <div className={styles.input_container}>
+                {rows.map((row, idx) => (
+                    <CourseInputRow
+                        key={row.id}
+                        idx={idx}
+                        value={row}
+                        setRows={setRows}
+                        onRemove={() => handleRemove(row.id)}
+                        subdata_option={subdata_option}
+                    />
+                ))}
+            </div>
             <button className={styles.addButton} onClick={handleAdd}>
             + 강의 추가
             </button>
