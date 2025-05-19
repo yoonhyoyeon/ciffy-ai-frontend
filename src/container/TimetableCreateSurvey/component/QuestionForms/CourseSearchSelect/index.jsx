@@ -21,7 +21,7 @@ const generatedId = () => {
     return Date.now().toString(36) + Math.random().toString(36).substring(2, 5);
 }
 
-const CourseSearchSelect = ({subdata_option=SUBDATA_TYPE.SECTION, answer, setAnswer, question_id}) => {
+const CourseSearchSelect = ({subdata_option=SUBDATA_TYPE.SECTION, answer, question_id, updateAnswer}) => {
     const [rows, setRows] = useState(() => answer[question_id].length > 0 ? answer[question_id] : [
         {
             id: generatedId(),
@@ -30,14 +30,7 @@ const CourseSearchSelect = ({subdata_option=SUBDATA_TYPE.SECTION, answer, setAns
         }
     ]);
     useEffect(() => {
-        setAnswer((prev) => ({
-            ...prev,
-            [question_id]: rows.map(row => row.course_name && row.course_name.trim() !== '' ? {
-                id: row.id,
-                course_name: row.course_name,
-                [subdata_option]: row[subdata_option]
-            } : null).filter(Boolean)
-        }));
+        updateAnswer(rows);
     }, [rows]);
     
     const handleRemove = (id) => {
