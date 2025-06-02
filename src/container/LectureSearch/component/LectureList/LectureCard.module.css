@@ -1,0 +1,58 @@
+.container {
+    background-color: var(--color-white-opacity-50);
+    padding: 3px;
+    border-radius: 14px;
+    border: 1px solid var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 140px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.container:hover {
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.1);
+    transform: scale(1.02);
+}
+
+.container .lectureInfo {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-white);
+    padding: 16px;
+    border-radius: 14px;
+    border: 1px solid var(--color-bg);
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+.container .lectureInfo .lectureInfoHeader {
+    flex: 1;
+}
+
+.container .lectureInfo h2 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-blue-2);
+    margin: 0;
+    margin-bottom: 8px;
+}
+
+.container .lectureInfo h3 {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-blue-2-opacity-30);
+    margin: 0;
+}
+
+.container .lectureInfo .lectureInfoFooter{
+    text-align: right;
+}
+
+.container .lectureInfo .lectureInfoFooter .professor {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-blue-2);
+}

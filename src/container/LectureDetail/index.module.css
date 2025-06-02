@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 1280px;
+    margin: 0 auto;
+    height: calc(100vh - 70px);
+    padding: 40px 0 48px 0;
+    box-sizing: border-box;
+}
+.container .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    height: 50px;
+    box-sizing: border-box;
+}
+.container .header .title .titleText {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--color-blue-2);
+    margin-right: 16px;
+}
+.container .header .title .professorText {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-blue-2-opacity-30);
+}
+.container .contents {
+    flex: 1;
+    display: flex;
+    gap: 60px;
+    height: calc(100% - 50px);
+}
+.container .contents .totalData {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: var(--color-white-opacity-40);
+    border-radius: 14px;
+    border: 1px solid var(--color-white);
+    padding: 24px;
+}
+.container .contents .reviewList {
+    flex: 2;
+    overflow-y: auto;
+}

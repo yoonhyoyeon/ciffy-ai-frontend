@@ -1,0 +1,13 @@
+.container {
+    width: 100%;
+    padding: 120px 0;
+    text-align: center;
+}
+
+.container h2 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-blue-2-opacity-40);
+    white-space: pre-line;
+    line-height: 140%;
+}

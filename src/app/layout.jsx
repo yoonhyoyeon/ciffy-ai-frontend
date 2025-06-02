@@ -14,11 +14,11 @@ export default function RootLayout({ children, modal }) {
   return (
     <html lang="en">
       <body>
+      {modal}
+      <NavigationGuardProvider>
         <Navigation />
-        {modal}
-        <NavigationGuardProvider>
-          {children}
-        </NavigationGuardProvider>
+        {children}
+      </NavigationGuardProvider>
       </body>
     </html>
   );

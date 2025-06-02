@@ -10,7 +10,7 @@
     color: var(--color-blue-1);
     text-align: center;
 }
-.circular_progress_bar_text span, .circular_progress_bar_text_active span {
+.circular_progress_bar_text .small_text, .circular_progress_bar_text_active .small_text {
     display: block;
     font-size: 12px;
     font-style: normal;

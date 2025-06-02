@@ -9,13 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@svgr/webpack": "^8.1.0",
     "classnames": "^2.5.1",
     "next": "15.2.1",
     "next-navigation-guard": "^0.1.2",
-    "react": "^19.0.0",
+    "react": "^18.3.1",
     "react-circular-progressbar": "^2.2.0",
     "react-countup": "^6.5.3",
-    "react-dom": "^19.0.0",
+    "react-dom": "^18.3.1",
     "react-typed": "^2.0.12"
   },
   "devDependencies": {

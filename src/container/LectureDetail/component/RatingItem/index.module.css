@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.container .label {
+    width: 60px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-blue-2-opacity-60);
+}
+.container .label img {
+    width: 16px;
+}
+.container .progressWrapper {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+.container .progressWrapper .percentage {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-yellow-0);
+    width: 28px;
+    margin-right: 8px;
+    text-align: right;
+}
+.container .progressWrapper .barBackground {
+    flex: 1;
+    height: 10px;
+    background-color: var(--color-white);
+    border-radius: 10px;
+}
+.container .progressWrapper .bar {
+    height: 100%;
+    background-color: var(--color-yellow-0);
+    border-radius: 10px;
+    animation: bar 1s ease;
+}
+
+@keyframes bar {
+    0% {
+        opacity: 0;
+        width: 0%;
+    }
+}

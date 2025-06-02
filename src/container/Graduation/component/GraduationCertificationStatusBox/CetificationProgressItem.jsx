@@ -1,6 +1,9 @@
+"use client";
 import ProgressBar from '@/component/ProgressBar';
 import styles from './index.module.css';
 import cx from 'classnames';
+import CountUp from 'react-countup';
+
 const CertificationProgressItem = ({item}) => {
     const isActive = item.status === 'P';
     return (
@@ -11,7 +14,9 @@ const CertificationProgressItem = ({item}) => {
             </div>
             <div className={styles.certification_item_progress}>
                 <ProgressBar value={isActive ? 1 : 0} max={1} />
-                <div className={styles.percentage}>{isActive ? 100 : 0}%</div>
+                <div className={styles.percentage}>
+                    <CountUp end={isActive ? 100 : 0} duration={1} />%
+                </div>
             </div>
         </div>
     );

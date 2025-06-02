@@ -1,0 +1,21 @@
+.selectBox {
+    background-color: transparent;
+    color: var(--color-blue-2);
+    font-size: 12px;
+    font-weight: 600;
+    width: 84px;
+    height: 24px;
+    border: 0;
+    position: relative;
+    appearance:none;
+    background:url('/images/icon_dropdown.svg') no-repeat left;
+    text-align: right;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+.selectBox:focus {
+    outline: none;
+}
+.selectBox:hover {
+    cursor: pointer;
+}

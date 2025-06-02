@@ -1,7 +1,7 @@
 import Button from '../Button';
 import styles from './index.module.css';
 import Form from 'next/form';
-import { signIn } from '@/service';
+import { signIn } from '@/service/auth';
 
 const LoginPopupContents = () => {
     const handleSubmit = async(formData) => {
