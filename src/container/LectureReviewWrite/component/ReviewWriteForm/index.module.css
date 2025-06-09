@@ -1,0 +1,86 @@
+.form {
+    width: 100%;
+    padding-bottom: 40px;
+}
+.form .top_container {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 50px;
+    row-gap: 40px;
+}
+.form .top_container .input_item {
+    display: flex;
+    align-items: center;
+}
+.form .top_container .input_item .title {
+    width: 70px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-blue-2);
+}
+.form .top_container .input_item select {
+    width: 50%;
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(6, 0, 58, 0.10);
+    background: rgba(255, 255, 255, 0.50);
+}
+.form .top_container .input_item .ratingLabel {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-image: url('/images/icon_starOff.png');
+    background-size: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+.form .top_container .input_item .ratingLabelActive {
+    background-image: url('/images/icon_starOn.png');
+}
+.form .top_container .input_item .label_text {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-blue-2-opacity-40);
+    cursor: pointer;
+    margin-left: 8px;
+    margin-right: 16px;
+}
+.form .bottom_container {
+    text-align: center;
+    margin-top: 40px;
+}
+.form .bottom_container button {
+    width: 200px;
+    height: 44px;
+    margin: 0 4px;
+    border: 0;
+}
+.form .textarea_container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 40px;
+}
+.form .textarea_container .title {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-blue-2);
+    margin-bottom: 16px;
+}
+.form .textarea_container textarea {
+    width: 100%;
+    height: 160px;
+    border: 1px solid var(--color-blue-2-opacity-10);
+    background: var(--color-white-opacity-50);
+    border-radius: 4px;
+    padding: 16px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    font-family: 'Pretendard-Regular';
+    resize: none;
+}

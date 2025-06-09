@@ -3,6 +3,7 @@ import Button from '@/component/Button';
 import TotalRating from './component/TotalRating';
 import FeatureRating from './component/FeatureRating';
 import ReviewList from './component/ReviewList';
+import Link from 'next/link';
 
 const LectureDetail = ({lecture}) => {
     return (
@@ -12,7 +13,9 @@ const LectureDetail = ({lecture}) => {
                     <span className={styles.titleText}>{lecture.title}</span>
                     <span className={styles.professorText}>{lecture.professor}</span>
                 </div>
-                <Button size="medium" isFilled>강의 후기 작성하기</Button>
+                <Link href={`/lecture/write/${lecture.id}`}>
+                    <Button size="medium" isFilled>강의 후기 작성하기</Button>
+                </Link>
             </div>
             <div className={styles.contents}>
                 <div className={styles.totalData}>

@@ -1,0 +1,121 @@
+.container {
+    width: 100%;
+    background-color: var(--color-white);
+    height: 560px;
+    box-sizing: border-box;
+    padding: 46px 12px 0 50px;
+    margin: 0 auto;;
+    border: 1px solid #E5E5E5;
+    border-radius: 10px;
+    transition: .2s ease;
+    white-space: normal;
+}
+.container.active {
+    border: 3px solid var(--color-blue-1-opacity-80);
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-20px);
+}
+.container.isHoverable:hover {
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-10px);
+}
+.container.isHoverable:hover .button_wrap {
+    display: flex;
+}
+.container .timetable_wrap {
+    display: flex;
+    position: relative;
+}
+.container .timetable_wrap .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+.container .timetable_wrap .mask .row {
+    width: 100%;
+    height: 21.5px;
+    border-bottom: 1px solid #f5f3f1cc;
+}
+.container .timetable_wrap .time_label .label {
+    height: 45px;
+    color: var(--color-blue-3-opacity-50);
+    font-size: 14px;
+}
+.container .timetable_wrap .time_label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: absolute;
+    right: 100%;
+    padding-right: 10px;
+}
+.container .timetable_wrap .column {
+    flex: 1;
+    height: 450px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin: 0 2px;
+}
+.container .timetable_wrap .column .label {
+    position: absolute;
+    color: var(--color-blue-2);
+    font-size: 14px;
+    bottom: 100%;
+    padding-bottom: 10px;
+}
+.container .timetable_wrap .column .item_container {
+    width: 100%;
+    background-color: var(--color-blue-0);
+    border-radius: 4px;
+    position: absolute;
+    color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 6%;
+    box-sizing: border-box;
+    word-break: normal!important;
+}
+.container .timetable_wrap .column .item_container .name {
+    font-size: 9px;
+    text-align: left;
+    font-weight:600;
+}
+.container .timetable_wrap .column .item_container .subtxt {
+    font-size: 8px;
+    text-align: right;
+    font-weight:500;
+}
+.container .online_wrap {
+    text-align: left;
+    font-size: 10px;
+    color: var(--color-blue-2-opacity-40);
+    font-weight: 600;
+}
+
+.container .button_wrap {
+    width: 100%;
+    display: none;
+    justify-content: space-between;
+    margin-top: 10px;
+    gap: 10px;
+    animation: fadeIn 0.3s ease-in-out;
+    transform: translateX(-18px);
+}
+.container .button_wrap button {
+    height: 44px;
+    flex: 1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

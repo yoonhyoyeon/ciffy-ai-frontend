@@ -4,7 +4,7 @@ import ReviewItem from './ReviewItem';
 import NoResult from '@/component/NoResult';
 const ReviewList = async ({lectureId}) => {
     const reviews = await getReviews(lectureId);
-    console.log(reviews);
+    
     return (
         <div className={styles.container}>
             {

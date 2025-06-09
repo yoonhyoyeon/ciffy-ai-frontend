@@ -1,0 +1,58 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    max-width: 1280px;
+    margin: 0 auto;
+    height: calc(100vh - 70px);
+    padding: 40px 0 48px 0;
+    box-sizing: border-box;
+}
+.container h1 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--color-blue-2);
+}
+.container .description {
+    color: var(--color-blue-2);
+    line-height: 140%;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: var(--color-blue-2-opacity-5);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 40px;
+}
+.container .description ul {
+    margin: 0;
+    padding: 0;
+    padding-left: 16px;
+}
+.container .description ul li {
+    margin: 3px 0;
+}
+.container .lecture_info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 50px;
+    row-gap: 40px;
+    margin-bottom: 40px;
+}
+.container .lecture_info .lecture_info_item {
+    display: flex;
+}
+.container .lecture_info .lecture_info_item .label {
+    width: 70px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-blue-2);
+}
+
+.container .lecture_info .lecture_info_item .value {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-blue-0);
+}
