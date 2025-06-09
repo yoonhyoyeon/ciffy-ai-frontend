@@ -1,13 +1,9 @@
-'use client';
 import styles from './index.module.css';
 import TimetableLectureItem from './TimetableLectureItem';
 import { groupLecturesByDay } from '@/utils';
 import cx from 'classnames';
-import Button from '@/component/Button';
-import { useRouter } from 'next/navigation';
 
 const Timetable = ({data, isHoverable = false}) => {
-    const router = useRouter();
     const { lectures, id } = data;
     const lecturesByDay = groupLecturesByDay(lectures);
     return (
@@ -106,23 +102,9 @@ const Timetable = ({data, isHoverable = false}) => {
             <div className={styles.online_wrap}>
                 {
                     lecturesByDay.online?.map((v, i) => (
-                        <span key={i}>{ v.name }</span>
+                        <span key={i}>{ v.title }</span>
                     ))
                 }
-            </div>
-            <div className={styles.button_wrap}>
-                    <Button 
-                        size="small" 
-                        customStyles={{
-                            backgroundColor: 'var(--color-blue-2-opacity-10)',
-                            color: 'var(--color-blue-2)',
-                            border: 0
-                        }}
-                        onClick={() => {
-                            router.push(`/timetable/create/detail/${id}`);
-                        }}
-                    >자세히 보기</Button>
-                <Button size="small" isFilled={true}>선택하기</Button>
             </div>
         </div>
     );

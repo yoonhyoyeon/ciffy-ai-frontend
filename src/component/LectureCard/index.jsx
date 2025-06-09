@@ -1,4 +1,4 @@
-import styles from './LectureCard.module.css';
+import styles from './index.module.css';
 import Link from 'next/link';
 const LectureCard = ({lecture}) => {
     return (

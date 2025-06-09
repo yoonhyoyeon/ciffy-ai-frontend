@@ -1,5 +1,5 @@
 import styles from './index.module.css';
-import LectureCard from './LectureCard';
+import LectureCard from '../../../../component/LectureCard';
 
 const LectureList = ({lectures}) => {
     return (

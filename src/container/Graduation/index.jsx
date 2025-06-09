@@ -1,6 +1,6 @@
 import styles from './index.module.css';
 import TotalGraduationBox from './component/TotalGraduationBox';
-import RequirementProgressBox from './component/RequirementProgressBox';
+import RequirementProgressBox from '@/component/RequirementProgressBox';
 import GraduationCertificationStatusBox from './component/GraduationCertificationStatusBox';
 import Button from '@/component/Button';
 
@@ -47,12 +47,16 @@ const Graduation = () => {
                   />
                 </div>
                 <div className={styles.requirement_section}>
-                  {requirements.map((req, idx) => (
+                  {requirements.map((req, idx) => {
+                    const link = req.title === '전공' ? '/graduation/major' : req.title === '교양' ? '/graduation/general' : '/graduation/certification';
+                    return (
                       <RequirementProgressBox
                           key={req.title+idx}
                           data={req}
+                          link={link}
                       />
-                  ))}
+                    )
+                  })}
                 </div>
               </div>
               <div className={styles.row2}>

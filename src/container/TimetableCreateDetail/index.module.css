@@ -1,0 +1,128 @@
+.container {
+    display: flex;
+    gap: 32px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 50px 0 30px 0;
+    box-sizing: border-box;
+}
+
+.container .timetable_wrap {
+    background-color: var(--color-white-opacity-50);
+    border: 1px solid var(--color-white);
+    border-radius: 10px;
+    padding: 4px;
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+    height: 620px;
+    transition: .5s ease;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+.container .timetable_wrap .button_wrap {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 0;
+    animation: fadeIn .5s ease;
+    position: absolute;
+    bottom: 0;
+    left: 4px;
+    right: 4px;
+}
+.container .timetable_wrap .button_wrap button {
+    flex: 1;
+    height: 44px;
+}
+.container .detail_wrap {
+    flex: 3;
+    overflow-y: auto;
+}
+.container .detail_wrap .comment_wrap {
+    background-color: var(--color-blue-2);
+    color: var(--color-white);
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    margin-bottom: 32px;
+}
+.container .detail_wrap .comment_wrap h1 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+.container .detail_wrap .comment_wrap h1 img {
+    width: 20px;
+    margin-right: 8px;
+}
+.container .detail_wrap .comment_wrap p {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+    line-height: 140%;
+    margin-left: 28px;
+}
+.container .detail_wrap .comment_wrap .right_img {
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.container .detail_wrap .item_wrap {
+    margin-bottom: 32px;
+}
+.container .detail_wrap .item_wrap h1{
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    margin-bottom: 16px;
+}
+.container .detail_wrap .item_wrap .lecture_list {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    overflow: visible;
+    position: relative;
+    width: 100%;
+}
+.container .detail_wrap .item_wrap .lecture_list:hover .cover {
+    opacity: 1;
+}
+.container .detail_wrap .item_wrap .lecture_list .lecture_list_wrap {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+    flex: 1;
+}
+.container .detail_wrap .item_wrap .lecture_list .cover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    width:  70px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(270deg, #F5F3F1 0%, rgba(245, 243, 241, 0.00) 100%);
+    opacity: 0;
+    transition: .5s ease;
+    z-index: 1;
+}
+.container .detail_wrap .item_wrap .lecture_list .cover.left_cover {
+    left: 0;
+    background: linear-gradient(90deg, #F5F3F1 0%, rgba(245, 243, 241, 0.00) 100%);
+}
+.container .detail_wrap .item_wrap .lecture_list .cover img {
+    width: 20px;
+}
+.container .detail_wrap .item_wrap .lecture_list .cover.left_cover img {
+    transform: rotate(180deg);
+}
+.container .detail_wrap .item_wrap .lecture_list .lecture_card {
+    min-width: 200px;
+}
