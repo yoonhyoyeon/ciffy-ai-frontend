@@ -2,7 +2,7 @@
 import styles from './index.module.css';
 import { useRouter } from 'next/navigation';
 
-const Popup = ({children}) => {
+const PopupLayout = ({children}) => {
     const router = useRouter();
     const closePopup = () => {
         router.back();
@@ -17,4 +17,4 @@ const Popup = ({children}) => {
     )
 }
 
-export default Popup;
+export default PopupLayout;

@@ -1,7 +1,8 @@
 import LectureSearch from "@/container/LectureSearch";
 
 export async function generateMetadata({searchParams}) {
-    const keyword = searchParams.keyword ? decodeURIComponent(searchParams.keyword) : '';
+    const params = await searchParams;
+    const keyword = params?.keyword ? decodeURIComponent(params.keyword) : '';
     return keyword ? {
         title: `${keyword} - 강의 검색`
     } : {
@@ -9,9 +10,10 @@ export async function generateMetadata({searchParams}) {
     }
 }
 
-const LectureSearchPage = ({ searchParams }) => {
-    const keyword = searchParams.keyword ? decodeURIComponent(searchParams.keyword) : '';
-    const sort = searchParams.sort ? decodeURIComponent(searchParams.sort) : 'popular';
+const LectureSearchPage = async ({ searchParams }) => {
+    const params = await searchParams;
+    const keyword = params?.keyword ? decodeURIComponent(params.keyword) : '';
+    const sort = params?.sort ? decodeURIComponent(params.sort) : 'popular';
     return <LectureSearch keyword={keyword} sort={sort} />
 }
 

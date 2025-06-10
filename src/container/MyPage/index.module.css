@@ -1,0 +1,148 @@
+.myPageWrap {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 0 60px 0;
+}
+.header {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-blue-2);
+  margin-bottom: 24px;
+}
+.semisterSelectSection {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.timetableTitle {
+  color: var(--color-blue-2);
+  font-size: 17px;
+  font-weight: 600;
+}
+.contents {
+  display: flex;
+  gap: 40px;
+  min-height: 600px;
+}
+.left {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 0 60px 0;
+}
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-blue-2);
+  margin-bottom: 32px;
+}
+.topSection {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+.infoBox {
+  background: var(--color-white-opacity-40);
+  border: 1px solid var(--color-white);
+  border-radius: 10px;
+  padding: 32px 36px;
+  display: flex;
+  justify-content: space-between;
+}
+.infoLeft, .infoRight {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 50px;
+}
+.infoLeft {
+  border-right: 1px solid var(--color-blue-2-opacity-10);
+}
+.infoTitle {
+  color: var(--color-blue-2);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  color: var(--color-blue-2);
+  gap: 16px;
+}
+.timetableBox {
+  background: var(--color-white-opacity-40);
+  border: 1px solid var(--color-white);
+  border-radius: 10px;
+  padding: 4px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+.timetableHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.timetableSelect {
+  border: 1.5px solid var(--color-blue-2-opacity-10);
+  border-radius: 8px;
+  padding: 6px 18px;
+  font-size: 15px;
+  color: var(--color-blue-2);
+  background: #fff;
+  font-weight: 500;
+}
+.timetableContent {
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.courseSection {
+  flex: 1;
+  margin-top: 40px;
+  overflow-x: auto;
+}
+.subtitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-blue-2);
+  margin-bottom: 16px;
+}
+.pageWrap {
+  display: flex;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+.leftScroll {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 700px;
+  overflow-y: auto;
+  height: 100vh;
+}
+.rightFixed {
+  position: fixed;
+  top: 40px;
+  right: 0;
+  z-index: 10;
+}

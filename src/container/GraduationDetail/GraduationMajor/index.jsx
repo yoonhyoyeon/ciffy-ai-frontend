@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import styles from './index.module.css';
+import styles from '../index.module.css';
 import cx from 'classnames';
 import Table from '@/component/Table';
 
@@ -31,13 +31,13 @@ const courseList = [
 const tableHeaders = ['학수번호', '과목명', '이수구분', '선택영역', '학점', ''];
 
 
-const GraduationGeneral = () => {
-    const tabs = ['공통교양필수', '학문기초교양필수', '교양선택'];
+const GraduationMajor = () => {
+    const tabs = ['전공필수', '전공선택'];
     const [selectedTab, setSelectedTab] = useState(0);
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>교양</h1>
+            <h1 className={styles.title}>전공</h1>
             <div className={styles.tab}>
                 {tabs.map((tab, index) => (
                     <span 
@@ -63,4 +63,4 @@ const GraduationGeneral = () => {
     )
 }
 
-export default GraduationGeneral;
+export default GraduationMajor;

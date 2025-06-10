@@ -2,7 +2,7 @@ import LoginPopupContents from '@/component/LoginPopupContents';
 import PopupLayout from '@/component/PopupLayout';
 
 export const metadata = {
-  title: 'Login'
+  title: '로그인'
 }
 
 const Login = () => {

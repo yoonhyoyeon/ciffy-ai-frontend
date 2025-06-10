@@ -2,20 +2,16 @@
 import { useState } from 'react';
 import styles from './index.module.css';
 import { useRouter } from 'next/navigation';
+import { useAuthStore } from '@/store/auth';
 
 const UserDropdown = ({closeNavbar, userid, username, checkAuth}) => {
+    const { logout } = useAuthStore();
     const router = useRouter();
     const [opened, setOpened] = useState(false);
 
     const sign_out = (e) => {
-        // deleteCookie('access_token');
-        // deleteCookie('refresh_token');
-        // deleteCookie('id');
-        // localStorage.clear();
-        // // closeNavbar();
-        // router.push('/');
-        // // checkAuth();
-        // location.reload(true);
+        logout();
+        router.push('/');
     }
     return (
         <div className={styles.UserDropdown}>

@@ -60,7 +60,8 @@
 }
 
 .UserDropdown .txt {
-    color: var(--color-blue-1);
+    color: var(--color-blue-2);
+    font-weight: 600;
     cursor: pointer;
 }
 .UserDropdown .background {
@@ -72,7 +73,7 @@
     opacity: 0;
     transition: .3s ease opacity;
     font-size: 14px;
-    color: var(--color-blue-3);
+    color: var(--color-blue-2);
 }
 .UserDropdown .background.opened {
     top: 0;
@@ -95,7 +96,7 @@
     cursor: pointer;
 }
 .UserDropdown .background .dropdown_box .item:hover {
-    background-color: var(--color-blue-gray-focus);
+    background-color: var(--color-blue-2-opacity-5);
     color: var(--color-blue-2);
 }
 .container .mobile_navbar {

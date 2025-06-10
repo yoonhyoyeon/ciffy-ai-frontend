@@ -3,6 +3,7 @@ import TotalGraduationBox from './component/TotalGraduationBox';
 import RequirementProgressBox from '@/component/RequirementProgressBox';
 import GraduationCertificationStatusBox from './component/GraduationCertificationStatusBox';
 import Button from '@/component/Button';
+import Link from 'next/link';
 
 const Graduation = () => {
   const data = {
@@ -37,7 +38,9 @@ const Graduation = () => {
       <div className={styles.container}>
           <div className={styles.top_bar}>
               <h1 className={styles.title}>졸업요건분석</h1>
-              <Button size="medium" isFilled={true}>기이수 성적표 업로드</Button>
+              <Link href="/graduation/upload">
+                <Button size="medium" isFilled={true}>기이수 성적표 업로드</Button>
+              </Link>
           </div>
           <div className={styles.contents}>
               <div className={styles.row1}>

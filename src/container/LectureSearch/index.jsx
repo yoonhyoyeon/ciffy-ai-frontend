@@ -4,6 +4,7 @@ import MyLectureSection from './component/MyLectureSection';
 import LectureList from './component/LectureList';
 import SortSelect from './component/SortSelect';
 import { getLectures } from '@/service/lecture';
+import NoResult from '@/component/NoResult';
 
 const SearchResult = ({lectures, keyword, sort}) => {
     return (
@@ -17,8 +18,8 @@ const SearchResult = ({lectures, keyword, sort}) => {
     )
 }
 const LectureSearch = async ({ keyword, sort }) => {
-
     const lectures = await getLectures({ keyword, sort });
+    console.log(lectures);
     
     return (
         <div className={styles.container}>

@@ -1,4 +1,4 @@
-import GraduationCertification from '@/container/GraduationCertification';
+import GraduationCertification from '@/container/GraduationDetail/GraduationCertification';
 
 export const metadata = {
     title: '졸업요건분석 - 졸업인증',

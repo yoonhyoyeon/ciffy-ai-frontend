@@ -43,6 +43,14 @@ const nextConfig = {
     fileLoaderRule.exclude = /\.svg$/i;
     return config;
   },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'http://localhost:8080/api/:path*', // 실제 백엔드 주소로 변경
+      },
+    ];
+  },
 };
  
 export default nextConfig;

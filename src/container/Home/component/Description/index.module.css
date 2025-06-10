@@ -2,6 +2,8 @@
     width: 100%;
     display: flex;
     margin-bottom: 120px;
+    opacity: 0;
+    transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
 }
 /* 오른쪽 정렬 */
 .container.right {
@@ -61,4 +63,15 @@
 }
 .container .image_area .image_container img {
     width: 100%;
+}
+
+.fromLeft {
+    transform: translateX(-40px);
+}
+.fromRight {
+    transform: translateX(40px);
+}
+.fadeIn {
+    opacity: 1;
+    transform: translateX(0);
 }

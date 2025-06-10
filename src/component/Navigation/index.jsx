@@ -6,12 +6,16 @@ import { usePathname, useRouter } from 'next/navigation';
 import Button from '@/component/Button';
 import UserDropdown from './UserDropdown';
 import cx from 'classnames';
+import { useAuthStore } from '@/store/auth';
 
 const Navigation = () => {
     const [background, setBackground] = useState(false); 
     const [mobile_opened, setMobile_opened] = useState(false);
-    const [isAuthorized, setIsAuthorized] = useState(false);
-    const [userinfo, setUserinfo] = useState({});
+    const { isAuthorized, user, checkAuth } = useAuthStore();
+    const [userinfo, setUserinfo] = useState({
+        id: '1234567890',
+        name: '윤효연',
+    });
     const path = usePathname();
     const router = useRouter();
 
@@ -26,6 +30,10 @@ const Navigation = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    useEffect(() => {
+        checkAuth();
+    }, [checkAuth]);
 
     const openLogin = () => router.push('/auth/login'); // 로그인 페이지로 이동
 
@@ -56,7 +64,7 @@ const Navigation = () => {
                     closeNavbar={closeNavbar}
                     userid={userinfo?.id}
                     username={userinfo?.name}
-                    checkAuth={checkAuth}
+                    // checkAuth={checkAuth}
                 /> :
                 <Link href="/auth/login" scroll={false} className={cx({[styles.hidden]: path.startsWith('/auth')})}>
                     <Button 

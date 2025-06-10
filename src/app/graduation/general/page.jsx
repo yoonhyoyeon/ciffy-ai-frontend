@@ -1,4 +1,4 @@
-import GraduationGeneral from '@/container/GraduationGeneral';
+import GraduationGeneral from '@/container/GraduationDetail/GraduationGeneral';
 
 export const metadata = {
     title: '졸업요건분석 - 교양',

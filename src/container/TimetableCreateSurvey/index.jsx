@@ -8,8 +8,6 @@ import { FormQ1, FormQ2, FormQ3, FormQ4, FormQ5, FormQ6, FormQ7, FormQ8, FormQ9,
 import { useNavigationGuard } from "next-navigation-guard";
 
 export default function TimetableCreateSurvey() {
-    useNavigationGuard({ confirm: () => window.confirm("페이지를 떠나시겠습니까?\n변경사항이 저장되지 않았습니다.") });
-    const [question_index, setQuestionIndex] = useState(0);
     const [answer, setAnswer] = useState({
         'batch_courses': [],
         'unavailable_times': [
@@ -90,9 +88,11 @@ export default function TimetableCreateSurvey() {
             description: "",
             form: <FormQ10 question_id='preferred_professors' answer={answer} setAnswer={setAnswer}/>
         },
-    ]
-
-    return (
+    ];
+    const [question_index, setQuestionIndex] = useState(0);
+    
+    useNavigationGuard({ confirm: () => window.confirm("페이지를 떠나시겠습니까?\n변경사항이 저장되지 않았습니다."), enabled: question_index !== questions.length-1 });
+       return (
         <div className={styles.container}>
             <SurveyProgressBar index={question_index+1} max={questions.length} />
             <QuestionBox question={questions[question_index]} question_index={question_index} />

@@ -14,15 +14,11 @@ const Button = ({size, isShadow, isFilled, customStyles, children, ...others}) =
         backgroundColor: 'var(--color-blue-2)',
         color: 'var(--color-white)'
     } : null;
-    const disabledStyle = others.disabled ? {
-        opacity: 0.5
-    } : null;
 
     const style = {
         ...sizeStyle[size], 
         ...shadowStyle, 
         ...filledStyle,
-        ...disabledStyle,
         ...customStyles,
     };
     return (

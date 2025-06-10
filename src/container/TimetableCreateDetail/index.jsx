@@ -120,7 +120,7 @@ const TimetableCreateDetail = ({timetableId}) => {
                     <LectureListScrollX lectures={timetableData.lectures} />
                 </div>
                 <div className={styles.item_wrap}>
-                    <h1>이수 후 예상 졸업요건</h1>
+                    <h1>학기 종료 후 예상 졸업요건</h1>
                     <div className={styles.graduation_list}>
                         {
                             graduationData.map((data) => (
