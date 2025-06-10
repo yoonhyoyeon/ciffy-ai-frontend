@@ -37,7 +37,7 @@ const LoginPopupContents = () => {
             // access_token을 쿠키에도 저장
             Cookies.set('access_token', result.data.data.access_token, { path: '/' });
             router.back();
-            router.refresh();
+            window.location.reload();
         }
     }
 
