@@ -3,17 +3,15 @@ import { useState } from 'react';
 import styles from './index.module.css';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/auth';
-import Cookies from 'js-cookie';
 
-const UserDropdown = ({closeNavbar, userid, username, checkAuth}) => {
-    const { logout } = useAuthStore();
+const UserDropdown = ({closeNavbar, username}) => {
+    const { logout, user } = useAuthStore();
     const router = useRouter();
     const [opened, setOpened] = useState(false);
 
     const sign_out = (e) => {
         logout();
-        Cookies.remove('access_token', { path: '/' });
-        router.push('/');
+        window.location.reload();
     }
     return (
         <div className={styles.UserDropdown}>
@@ -22,7 +20,7 @@ const UserDropdown = ({closeNavbar, userid, username, checkAuth}) => {
                     setOpened((prev) => !prev);
                 }} 
                 className={styles.txt}
-            >{username} ⏷</span>
+            >{user?.name} ⏷</span>
             <div 
                 className={`${opened ? styles.opened : null} ${styles.background}`}
                 onClick={() => setOpened(false)}

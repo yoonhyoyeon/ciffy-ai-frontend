@@ -2,7 +2,7 @@
 import Button from '../Button';
 import styles from './index.module.css';
 import { useFormStatus } from 'react-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { loginAction } from '@/app/actions/auth';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/auth';
@@ -24,7 +24,13 @@ function SubmitButton() {
 const LoginPopupContents = () => {
     const [error, setError] = useState('');
     const router = useRouter();
-    const { login } = useAuthStore();
+    const { login, isAuthorized } = useAuthStore();
+
+    useEffect(() => {
+        if (isAuthorized) {
+            router.replace('/');
+        }
+    }, [isAuthorized]);
 
     async function action(formData) {
         setError('');
@@ -32,11 +38,8 @@ const LoginPopupContents = () => {
         if (result?.error) {
             setError(result.error);
         } else {
-            // zustand로 인증 상태 갱신
-            login(result.data.data.access_token, result.data.data.user);
-            // access_token을 쿠키에도 저장
-            Cookies.set('access_token', result.data.data.access_token, { path: '/' });
-            router.back();
+            // zustand로 인증 상태 갱신(쿠키 저장 포함)
+            login(result.data.data.access_token, { id: '1234567890', name: '윤효연'});
             window.location.reload();
         }
     }

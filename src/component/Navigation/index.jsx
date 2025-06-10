@@ -11,16 +11,13 @@ import { useAuthStore } from '@/store/auth';
 const Navigation = () => {
     const [background, setBackground] = useState(false); 
     const [mobile_opened, setMobile_opened] = useState(false);
-    const { isAuthorized, user, checkAuth } = useAuthStore();
-    const [userinfo, setUserinfo] = useState({
-        id: '1234567890',
-        name: '윤효연',
-    });
+    const { isAuthorized, user, checkAuth, setUser } = useAuthStore();
     const path = usePathname();
     const router = useRouter();
 
     /* 스크롤 내리면 배경 색상 변경 */
     useEffect(() => {
+        
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
             if(currentScrollY>0) setBackground(true);
@@ -34,6 +31,10 @@ const Navigation = () => {
     useEffect(() => {
         checkAuth();
     }, [checkAuth]);
+
+    useEffect(() => {
+        setUser({id: '1234567890', name: '윤효연'});
+    }, []);
 
     const openLogin = () => router.push('/auth/login'); // 로그인 페이지로 이동
 
@@ -62,9 +63,7 @@ const Navigation = () => {
             { isAuthorized===null ? null : isAuthorized ?
                 <UserDropdown
                     closeNavbar={closeNavbar}
-                    userid={userinfo?.id}
-                    username={userinfo?.name}
-                    // checkAuth={checkAuth}
+                    username={user?.name}
                 /> :
                 <Link href="/auth/login" scroll={false} className={cx({[styles.hidden]: path.startsWith('/auth')})}>
                     <Button 
