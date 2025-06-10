@@ -3,6 +3,7 @@ import { useState } from 'react';
 import styles from './index.module.css';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/auth';
+import Cookies from 'js-cookie';
 
 const UserDropdown = ({closeNavbar, userid, username, checkAuth}) => {
     const { logout } = useAuthStore();
@@ -11,6 +12,7 @@ const UserDropdown = ({closeNavbar, userid, username, checkAuth}) => {
 
     const sign_out = (e) => {
         logout();
+        Cookies.remove('access_token', { path: '/' });
         router.push('/');
     }
     return (

@@ -1,20 +1,22 @@
 import { NextResponse } from "next/server";
 
 export async function middleware(request) {
-    const response = NextResponse.next();
+  // 예시: access_token 또는 refresh_token 쿠키 확인
+  const access_token = request.cookies.get('access_token')?.value;
+  const refresh_token = request.cookies.get('refresh_token')?.value;
 
-    // const access_token = request.cookies.get('access_token')?.value;
-    const refresh_token = request.cookies.get('refresh_token')?.value;
-    const isAuthorized = refresh_token !== undefined;
-    if(!isAuthorized) {
-      // return NextResponse.redirect(new URL('/auth/login', request.url));
-    }
-    //만료 된경우 메인 페이지로 리다이렉션 & 쿠키 삭제 (maxAge:0으로 설정) -> 추후에 구현해야 함.
+  // 인증 여부 판단
+  const isAuthorized = !!access_token || !!refresh_token;
 
-    return response;
+  if (!isAuthorized) {
+    // 미인증 시 로그인 페이지로 리다이렉트
+    return NextResponse.redirect(new URL('/auth/login', request.url));
   }
-  
-  // See "Matching Paths" below to learn more
-  export const config = {
-    matcher: ['/graduation/:path*', '/lecture/:path*', '/timetable/:path*', '/mypage/:path*']
-  }
+
+  // 인증된 경우 그대로 진행
+  return NextResponse.next();
+}
+
+export const config = {
+  matcher: ['/graduation/:path*', '/lecture/:path*', '/timetable/:path*', '/mypage/:path*']
+}

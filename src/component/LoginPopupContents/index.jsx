@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { loginAction } from '@/app/actions/auth';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/auth';
+import Cookies from 'js-cookie';
 
 function SubmitButton() {
     const { pending } = useFormStatus();
@@ -33,6 +34,8 @@ const LoginPopupContents = () => {
         } else {
             // zustand로 인증 상태 갱신
             login(result.data.data.access_token, result.data.data.user);
+            // access_token을 쿠키에도 저장
+            Cookies.set('access_token', result.data.data.access_token, { path: '/' });
             router.back();
         }
     }
