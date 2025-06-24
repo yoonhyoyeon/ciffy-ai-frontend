@@ -5,8 +5,8 @@ const TotalRating = ({ ratingCount }) => {
     //index 0이 가장 낮은 평점
     //index 4가 가장 높은 평점
     const reversedRatingCount = [...ratingCount].reverse();
-    const totalRating = ratingCount.reduce((acc, cur, index) => acc + (index + 1) * cur, 0) / ratingCount.reduce((acc, cur) => acc + cur, 0);
     const totalReviewCount = ratingCount.reduce((acc, cur) => acc + cur, 0);
+    const totalRating = totalReviewCount===0?0:ratingCount.reduce((acc, cur, index) => acc + (index + 1) * cur, 0) / totalReviewCount;
     const activeIndex = reversedRatingCount.indexOf(Math.max(...ratingCount));
 
     return (

@@ -22,7 +22,7 @@ const generatedId = () => {
 }
 
 const CourseSearchSelect = ({subdata_option=SUBDATA_TYPE.SECTION, answer, question_id, updateAnswer}) => {
-    const [rows, setRows] = useState(() => answer[question_id].length > 0 ? answer[question_id] : [
+    const [rows, setRows] = useState(() => answer[question_id].length > 0 ? answer[question_id].map((v) => ({...v, is_submitted: true})) : [
         {
             id: generatedId(),
             course_name: "",
@@ -34,12 +34,13 @@ const CourseSearchSelect = ({subdata_option=SUBDATA_TYPE.SECTION, answer, questi
     }, [rows]);
     
     const handleRemove = (id) => {
-        setRows(rows.filter(row => row.id !== id));
+        setRows((prevRows) => prevRows.filter((row) => row.id !== id));
     };
     const handleAdd = () => {
-        setRows([...rows, {
+        setRows((prevRows) => [...prevRows, {
             id: generatedId(),
             course_name: "",
+            is_submitted: false,
             [subdata_option]: ""
         }]);
     };
@@ -60,6 +61,7 @@ const CourseSearchSelect = ({subdata_option=SUBDATA_TYPE.SECTION, answer, questi
                         setRows={setRows}
                         onRemove={() => handleRemove(row.id)}
                         subdata_option={subdata_option}
+                        isSubmitted={row.is_submitted}
                     />
                 ))}
             </div>

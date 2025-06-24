@@ -11,7 +11,7 @@ const FormQ5 = ({question_id, answer, setAnswer}) => {
                     [question_id]: rows.map(row => row.course_name && row.course_name.trim() !== '' ? {
                         id: row.id,
                         course_name: row.course_name,
-                        [SUBDATA_TYPE.SECTION]: row[SUBDATA_TYPE.SECTION]
+                        [SUBDATA_TYPE.PROFESSOR]: row[SUBDATA_TYPE.PROFESSOR]
                     } : null).filter(Boolean)
                 }));
             }}

@@ -6,8 +6,13 @@ import styles from './index.module.css';
 import { useState } from "react";
 import { FormQ1, FormQ2, FormQ3, FormQ4, FormQ5, FormQ6, FormQ7, FormQ8, FormQ9, FormQ10 } from "./component/QuestionForms";
 import { useNavigationGuard } from "next-navigation-guard";
+import { convertToUnavailableTimesFormat } from "@/component/TimeSelector";
+import { useTimetableStore } from "@/store/timetable";
+import { useRouter } from "next/navigation";
 
 export default function TimetableCreateSurvey() {
+    const router = useRouter();
+    const { fetchTimetable } = useTimetableStore();
     const [answer, setAnswer] = useState({
         'batch_courses': [],
         'unavailable_times': [
@@ -25,7 +30,7 @@ export default function TimetableCreateSurvey() {
         'preferred_attendance_check_method': 0, // 0, 1, 2 숫자 코드(enum)
         'preferred_exam_count': 0, // 0, 1, 2 숫자 코드(enum)  
         'preferred_team_project_count': 0, // 0, 1, 2 숫자 코드(enum)
-        'preferred_professors': [{name: '한동일', major: '컴퓨터공학과'}, {name: '이동현', major: '컴퓨터공학과'}, {name: '김영호', major: '컴퓨터공학과'}]
+        'preferred_professors': []
     });
     const questions = [
         {
@@ -89,6 +94,26 @@ export default function TimetableCreateSurvey() {
             form: <FormQ10 question_id='preferred_professors' answer={answer} setAnswer={setAnswer}/>
         },
     ];
+
+    const onSubmit = async () => {
+        const body = {
+            preRegistered: answer.batch_courses.map((v) => v.course_name+'-'+v.section),
+            unavailableTimes: convertToUnavailableTimesFormat(answer.unavailable_times),
+            wishLectures: [
+                ...answer.required_courses.map((v) => v.course_name+'-'+v.professor),
+                ...answer.preferred_major_courses.map((v) => v.course_name+'-'+v.professor)
+            ],
+            majorCount: answer.major_requirement_count,
+            major: '컴퓨터공학과',
+            currentSemester: 5,
+            maxCredits: 18,
+            maxTimetables: 3
+        }
+        
+        fetchTimetable(body);
+
+        router.push('/timetable/create/loading');
+    }
     const [question_index, setQuestionIndex] = useState(0);
     
     useNavigationGuard({ confirm: () => window.confirm("페이지를 떠나시겠습니까?\n변경사항이 저장되지 않았습니다."), enabled: question_index !== questions.length-1 });
@@ -96,7 +121,7 @@ export default function TimetableCreateSurvey() {
         <div className={styles.container}>
             <SurveyProgressBar index={question_index+1} max={questions.length} />
             <QuestionBox question={questions[question_index]} question_index={question_index} />
-            <NavigationButtons index={question_index} max={questions.length} setIndex={setQuestionIndex} />
+            <NavigationButtons index={question_index} max={questions.length} setIndex={setQuestionIndex} onSubmit={onSubmit} />
         </div>
     );
 }

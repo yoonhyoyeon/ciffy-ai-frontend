@@ -42,6 +42,7 @@
 .container .contents .row2 {
     width: 100%;
     height: 200px;
+    margin-bottom: 20px;
 }
 @media screen and (max-width: 768px) {
     .container {

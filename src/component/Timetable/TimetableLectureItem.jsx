@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import styles from './index.module.css';
 
 const TimetableLectureItem = ({ data }) => {
-    const { title, professor, room, day, startHour, endHour } = data;
+    const { name, professor, room, day, startHour, endHour } = data;
     const [random, setRandom] = useState(1);
 
     useEffect(() => {
@@ -21,7 +21,7 @@ const TimetableLectureItem = ({ data }) => {
     return (
         <div className={`${styles.item_container} ${animationClass}`} style={style}>
             <span className={styles.name}>
-                { title }
+                { name }
             </span>
             <span className={styles.subtxt}>
                 { professor }<br />

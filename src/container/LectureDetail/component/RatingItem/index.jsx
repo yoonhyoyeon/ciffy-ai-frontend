@@ -17,7 +17,7 @@ const RatingItem = ({value, maxValue, children, color='var(--color-blue-2)',nonA
                     <div 
                         className={styles.bar} 
                         style={{
-                            width: `${value/maxValue*100}%`,
+                            width: `${value===0?0:value/maxValue*100}%`,
                             backgroundColor: activeColor
                         }}>
                     </div>

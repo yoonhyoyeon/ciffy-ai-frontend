@@ -6,8 +6,8 @@ const LectureCard = ({lecture}) => {
             <div className={styles.container}>
                 <div className={styles.lectureInfo}>
                     <div className={styles.lectureInfoHeader}>
-                    <h2>{lecture.name}</h2>
-                    <h3>{lecture.id}</h3>
+                    <h2>{lecture.course?.name || lecture.name}</h2>
+                    <h3>{lecture.classId}</h3>
                 </div>
                 <div className={styles.lectureInfoFooter}>
                     <span className={styles.professor}>{lecture.professor}</span>

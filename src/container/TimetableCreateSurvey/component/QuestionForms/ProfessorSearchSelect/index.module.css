@@ -9,7 +9,11 @@
     min-width: 600px;
     min-height: 400px;
 }
+.container form {
+    width: 100%;
+}
 .container input {
+    width: 100%;
     padding: 14px;
     border-radius: 4px;
     background-color: var(--color-white);
@@ -19,6 +23,7 @@
     font-weight: 600;
     color: var(--color-blue-2);
     margin-bottom: 24px;
+    box-sizing: border-box;
 }
 .container input::placeholder {
     color: var(--color-blue-2-opacity-30);
@@ -35,6 +40,7 @@
     padding: 8px 12px;
     border-radius: 100px;
     margin-right: 10px;
+    margin-bottom: 10px;
 }
 .container .professorList .professorItem span {
     color: var(--color-white);

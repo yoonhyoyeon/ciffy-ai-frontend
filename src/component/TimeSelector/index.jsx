@@ -21,6 +21,18 @@ function convertSelectedRanges(selectedRanges, startHour = 9) {
   });
 }
 
+// 선택된 시간대를 "요일 HH:MM~HH:MM" 포맷으로 변환하는 함수
+function convertToUnavailableTimesFormat(selectedRanges, startHour = 9) {
+  return selectedRanges.map(range => {
+    const [start, end] = [range.startBlock, range.endBlock].sort((a, b) => a - b);
+    const day = DAYS[range.dayIndex];
+    const startTime = formatTime(start, startHour);
+    const endTime = formatTime(end + 1, startHour); // end+1로 끝나는 시각(반오픈구간) 표현
+    
+    return `${day} ${startTime}~${endTime}`;
+  });
+}
+
 function getSelectedClass(dayIdx, blockIdx, ranges) {
     for (const range of ranges) {
         if (isInRange(dayIdx, blockIdx, range)) {
@@ -171,3 +183,6 @@ export default function TimeSelector({
     </div>
   );
 }
+
+// 함수들을 export해서 다른 컴포넌트에서 사용할 수 있도록 함
+export { convertToUnavailableTimesFormat };

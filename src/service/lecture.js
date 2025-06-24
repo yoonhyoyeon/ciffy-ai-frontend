@@ -2,18 +2,16 @@ import { authFetch } from '@/utils'; // authFetch를 사용하면 accessToken �
 
 const removeSpaces = (str) => (str || '').replace(/\s+/g, '');
 const getLectures = async ({ keyword = '', sort = '' } = {}) => {
-  // 1. 전체 강의 목록 받아오기
-  const res = await authFetch('/api/courses');
+  const res = await authFetch('/api/lectures');
   if (!res.ok) throw new Error('강의 목록을 불러오지 못했습니다.');
   let lectures = await res.json();
 
-  // 2. keyword 필터링 (title, professor 등에서 포함되는지)
   if (keyword) {
     const lowerKeyword = removeSpaces(keyword.toLowerCase());
     lectures = lectures.filter(
       (lecture) => {
-        const name = removeSpaces((lecture.name || '').toLowerCase());
-        const professor = removeSpaces((lecture.professor || '').toLowerCase());
+        const name = removeSpaces((lecture.course.name || '').toLowerCase());
+        const professor = removeSpaces((lecture.course.professor || '').toLowerCase());
         return name.includes(lowerKeyword) || professor.includes(lowerKeyword);
       }
     );
@@ -40,19 +38,16 @@ const getLectures = async ({ keyword = '', sort = '' } = {}) => {
 };
 
 const getLectureInfo = async (id) => {
-    const res = await authFetch(`/api/courses/${id}`);
+    const res = await authFetch(`/api/lectures/${id}`);
     if (!res.ok) throw new Error('강의 정보를 불러오지 못했습니다.');
     const lecture = await res.json();
     return {
         id: lecture.id,
-        title: lecture.name,
+        title: lecture.course.name,
         professor: lecture.professor,
-        totalRating: 4.5,
-        ratingCount: [3, 0, 4, 10, 27],
-        assignmentCount: [4, 26, 13],
-        teamCount: [30, 8, 5],
-        gradeCount: [1, 4, 38],
-        totalReviewCount: 43,
+        assignmentCount: [Math.floor(Math.random() * 10) + 20, Math.floor(Math.random() * 15) + 10, Math.floor(Math.random() * 5) + 1],
+        teamCount: [Math.floor(Math.random() * 20) + 25, Math.floor(Math.random() * 10) + 5, Math.floor(Math.random() * 3) + 1],
+        gradeCount: [Math.floor(Math.random() * 5) + 1, Math.floor(Math.random() * 8) + 2, Math.floor(Math.random() * 15) + 30],
     }
 }
 

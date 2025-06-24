@@ -1,14 +1,25 @@
 'use client';
 import styles from './index.module.css';
-import { createReviewAction } from '@/service/reviewAction';
+import { writeReviewAction } from '@/actions/review';
 import RatingInput from './RatingInput';
 import Button from '@/component/Button';
 import { useActionState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 const ReviewWriteForm = ({ lectureId }) => {
-    const [state, formAction] = useActionState(createReviewAction, null);
+    const [state, formAction, isPending] = useActionState(writeReviewAction, null);
     const router = useRouter();
+
+    useEffect(() => {
+        if (state?.success) {
+            alert('후기가 성공적으로 등록되었습니다!');
+            router.push(`/lecture/detail/${lectureId}`);
+        } else if (state?.error) {
+            alert(`후기 등록에 실패했습니다: ${state.error}`);
+            router.refresh();
+        }
+    }, [state, router, lectureId]);
 
     return (
         <form className={styles.form} action={formAction}>
@@ -16,12 +27,14 @@ const ReviewWriteForm = ({ lectureId }) => {
                 <input type="hidden" name="lectureId" value={lectureId} />
                 <div className={styles.input_item}>
                     <span className={styles.title}>학기</span>
-                    <select name="semister" id="semister" required>
+                    <select name="semester" id="semester" required>
                         <option value="">학기 선택</option>
-                        <option value="24년 1학기">24년 1학기</option>
-                        <option value="24년 2학기">24년 2학기</option>
-                        <option value="25년 1학기">25년 1학기</option>
-                        <option value="25년 2학기">25년 2학기</option>
+                        <option value="2025-1">25년 1학기</option>
+                        <option value="2024-1">24년 1학기</option>
+                        <option value="2024-2">24년 2학기</option>
+                        <option value="2023-2">23년 2학기</option>
+                        <option value="2023-1">23년 1학기</option>
+                        <option value="2022-2">22년 2학기</option>
                     </select>
                 </div>
                 <RatingInput />
@@ -78,10 +91,11 @@ const ReviewWriteForm = ({ lectureId }) => {
                     }}
                 >취소</Button>
                 <Button 
+                    type="submit"
                     isFilled 
                     size="small" 
-                    disabled={state?.pending}
-                >{state?.pending ? '후기 등록중...' : '후기 작성 완료'}</Button>
+                    disabled={isPending}
+                >{isPending ? '후기 등록중...' : '후기 작성 완료'}</Button>
             </div>
         </form>
     )

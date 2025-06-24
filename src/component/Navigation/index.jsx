@@ -11,9 +11,10 @@ import { useAuthStore } from '@/store/auth';
 const Navigation = () => {
     const [background, setBackground] = useState(false); 
     const [mobile_opened, setMobile_opened] = useState(false);
-    const { isAuthorized, user, checkAuth, setUser } = useAuthStore();
+    const { isAuthorized, user, checkAuth, fetchUser } = useAuthStore();
     const path = usePathname();
     const router = useRouter();
+    console.log(user);
 
     /* 스크롤 내리면 배경 색상 변경 */
     useEffect(() => {
@@ -30,11 +31,8 @@ const Navigation = () => {
 
     useEffect(() => {
         checkAuth();
+        fetchUser();
     }, [checkAuth]);
-
-    useEffect(() => {
-        setUser({id: '1234567890', name: '윤효연'});
-    }, []);
 
     const openLogin = () => router.push('/auth/login'); // 로그인 페이지로 이동
 

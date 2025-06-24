@@ -19,7 +19,6 @@ const SearchResult = ({lectures, keyword, sort}) => {
 }
 const LectureSearch = async ({ keyword, sort }) => {
     const lectures = await getLectures({ keyword, sort });
-    console.log(lectures);
     
     return (
         <div className={styles.container}>

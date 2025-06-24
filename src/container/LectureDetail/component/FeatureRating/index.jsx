@@ -3,6 +3,7 @@ import RatingItem from '../RatingItem';
 
 const FeatureRating = ({data, totalReviewCount, title, label}) => {
     const activeIndex = data.indexOf(Math.max(...data));
+    console.log(data);
     
     return (
         <div className={styles.container}>

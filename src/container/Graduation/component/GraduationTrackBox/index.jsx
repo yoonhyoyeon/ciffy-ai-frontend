@@ -2,16 +2,18 @@ import styles from './index.module.css';
 import Link from 'next/link';
 import CertificationProgressItem from './CetificationProgressItem';
 
-const GraduationCertificationStatusBox = ({data}) => {
-    const status = data.reduce((cnt, element) => cnt + (element.status === 'P' || element.current >= element.max), 0);
+const GraduationTrackBox = ({data}) => {
+    console.log(data);
+    const status = data.reduce((cnt, element) => cnt + (element.status === 'P'), 0);
     return (
         <div className={styles.container}>
             <div className={styles.title}>
                 <div className={styles.txt_area}>
-                    <h1>졸업인증</h1>
-                    <span className={styles.status}> {status} / 2</span>
-                    <span className={styles.description}>3개 중 2개 이상 통과해야함</span>
+                    <h1>트랙</h1>
+                    <span className={styles.status}> {status} / 3</span>
+                    <span className={styles.description}>트랙별로 6과목 이상 이수 시 트랙 이수 완료</span>
                 </div>
+                <span className={styles.detail_link}><Link href="/graduation/track">자세히 보기 &gt;</Link></span>
             </div>
             <div className={styles.certification_list}>
                 {data.map((item, index) => (
@@ -22,4 +24,4 @@ const GraduationCertificationStatusBox = ({data}) => {
     );
 }
 
-export default GraduationCertificationStatusBox;
+export default GraduationTrackBox;

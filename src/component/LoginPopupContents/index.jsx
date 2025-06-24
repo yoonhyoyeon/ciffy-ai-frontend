@@ -3,10 +3,9 @@ import Button from '../Button';
 import styles from './index.module.css';
 import { useFormStatus } from 'react-dom';
 import { useState, useEffect } from 'react';
-import { loginAction } from '@/app/actions/auth';
+import { loginAction } from '@/actions/auth';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/auth';
-import Cookies from 'js-cookie';
 
 function SubmitButton() {
     const { pending } = useFormStatus();

@@ -1,10 +1,8 @@
 import styles from './index.module.css';
-import { getReviews } from '@/service/review';
 import ReviewItem from './ReviewItem';
 import NoResult from '@/component/NoResult';
-const ReviewList = async ({lectureId}) => {
-    const reviews = await getReviews(lectureId);
-    
+
+const ReviewList = ({reviews}) => {
     return (
         <div className={styles.container}>
             {

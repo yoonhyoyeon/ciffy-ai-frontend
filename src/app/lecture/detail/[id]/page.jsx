@@ -10,9 +10,8 @@ export async function generateMetadata({params}) {
 }
 export default async function LectureDetailPage({params}) {
     const {id} = await params;
-    const lecture = await getLectureInfo(id);
-    
+
     return (
-        <LectureDetail lecture={lecture} />
+        <LectureDetail lectureId={id} />
     )
 }

@@ -26,6 +26,18 @@
     border: 1px solid rgba(6, 0, 58, 0.10);
     background: rgba(255, 255, 255, 0.50);
 }
+.form .top_container .input_item .ratingContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 2px;
+}
+.form .top_container .input_item .ratingWrapper {
+    position: relative;
+}
+.form .top_container .input_item input[name="rating"] {
+    display: none;
+}
 .form .top_container .input_item .ratingLabel {
     display: inline-block;
     width: 30px;
@@ -35,9 +47,15 @@
     background-position: center;
     background-repeat: no-repeat;
     cursor: pointer;
+    transition: background-image 0.2s ease;
 }
-.form .top_container .input_item .ratingLabelActive {
-    background-image: url('/images/icon_starOn.png');
+.form .top_container .input_item .ratingWrapper input[name="rating"]:checked + .ratingLabel,
+.form .top_container .input_item .ratingWrapper:has(input[name="rating"]:checked) ~ .ratingWrapper .ratingLabel {
+    background-image: url('/images/icon_starOn.png') !important;
+}
+.form .top_container .input_item .ratingWrapper:hover .ratingLabel,
+.form .top_container .input_item .ratingWrapper:hover ~ .ratingWrapper .ratingLabel {
+    background-image: url('/images/icon_starOn.png') !important;
 }
 .form .top_container .input_item .label_text {
     font-size: 14px;

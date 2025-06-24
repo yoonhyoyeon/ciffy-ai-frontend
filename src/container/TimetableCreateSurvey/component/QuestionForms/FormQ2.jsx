@@ -1,4 +1,4 @@
-import TimeSelector from "./TimeSelector";
+import TimeSelector from "@/component/TimeSelector";
 
 const FormQ2 = ({question_id, answer, setAnswer}) => {
     return (

@@ -3,11 +3,37 @@ import styles from './index.module.css';
 import { useRef, useState } from 'react';
 import Button from '@/component/Button';
 import { useRouter } from 'next/navigation';
+import { authFetch } from '@/utils';
+import { useGraduationStore } from '@/store/graduation';
 
 const allowedExtensions = ['xlsx', 'xls'];
 const isExcelFile = (file) => {
   const ext = file.name.split('.').pop().toLowerCase();
   return allowedExtensions.includes(ext);
+};
+
+const DUMMY_GRADUATION_DATA = {
+  total: { current: 63, total: 130 },
+  requirements: [
+    {
+      title: '전공',
+      items: [
+        { name: '전공필수', current: 15, total: 33 },
+        { name: '전공선택', current: 9, total: 39 }
+      ]
+    },
+    {
+      title: '교양',
+      items: [
+        { name: '공통교양필수', current: 5, total: 8 }
+      ]
+    }
+  ],
+  certifications: [
+    { name: '영어졸업인증', status: 'P' },
+    { name: '고전독서인증', status: 'P' },
+    { name: '소프트웨어코딩졸업인증', status: 'P' }
+  ]
 };
 
 const TranscriptUploadPopup = ({ onUpload, onCancel }) => {
@@ -16,6 +42,8 @@ const TranscriptUploadPopup = ({ onUpload, onCancel }) => {
   const [dragActive, setDragActive] = useState(false);
   const [error, setError] = useState('');
   const router = useRouter();
+  const { fetchGraduation, fetchTakenLectures } = useGraduationStore();
+  
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -54,6 +82,28 @@ const TranscriptUploadPopup = ({ onUpload, onCancel }) => {
     setDragActive(false);
   };
 
+  const handleUpload = async (e) => {
+    const file = fileInputRef.current.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const response = await authFetch('/api/graduation/upload', {
+      method: 'POST',
+      body: formData
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error('업로드 실패: ' + errorText);
+    }
+
+    const data = await response.json();
+    fetchGraduation();
+    fetchTakenLectures();
+    router.back();
+    return data;
+  };
+
   return (
     <div className={styles.popupBody}>
       <h2 className={styles.title}>기이수 성적표 업로드</h2>
@@ -84,7 +134,7 @@ const TranscriptUploadPopup = ({ onUpload, onCancel }) => {
       </div>
       <div className={styles.buttonRow}>
         <Button size="small" onClick={() => router.back()} customStyles={{backgroundColor: 'var(--color-blue-2-opacity-10)', color: 'var(--color-blue-2)'}}>취소</Button>
-        <Button size="small" onClick={onUpload} isFilled disabled={!fileName}>업로드하기</Button>
+        <Button size="small" onClick={handleUpload} isFilled disabled={!fileName}>업로드하기</Button>
       </div>
     </div>
   );
