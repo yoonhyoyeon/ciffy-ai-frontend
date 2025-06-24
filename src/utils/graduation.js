@@ -1,4 +1,4 @@
-const convertTrackToData = (track) => {
+export const convertTrackToData = (track) => {
     return track.map((track) => {
         const takedLectureCount = track.subjects.reduce((cnt, lecture) => cnt + lecture.taken, 0);
         return {
@@ -68,5 +68,3 @@ export function convertTakenLecturesToList(takenLectures) {
     });
     return list;
 }
-
-export { convertTrackToData, convertTakenLecturesToList };
