@@ -69,4 +69,4 @@ export function convertTakenLecturesToList(takenLectures) {
     return list;
 }
 
-export { convertTrackToData, convertGraduationData, convertTakenLecturesToList };
+export { convertTrackToData, convertTakenLecturesToList };
