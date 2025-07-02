@@ -4,7 +4,7 @@
 
 Ciffy는 학생들의 선호도와 졸업요건을 분석하여 최적의 시간표를 자동으로 생성하고, 강의 후기 및 졸업요건 분석 기능을 제공하는 통합 학사관리 플랫폼입니다.
 
-![Ciffy Banner](public/images/img_timetable.png)
+![Ciffy Banner](public/images/img_logo.png)
 
 ## ✨ 주요 기능
 
@@ -172,12 +172,6 @@ NEXT_PUBLIC_API_URL=your_backend_api_url
 - **토큰 관리**: localStorage와 쿠키 이중 저장
 - **라우트 보호**: Middleware를 통한 인증 필요 페이지 보호
 - **자동 갱신**: 토큰 자동 갱신 시스템
-
-## 📱 반응형 디자인
-
-- **모바일 우선**: 모바일 퍼스트 디자인 적용
-- **브레이크포인트**: 850px 기준 모바일/데스크톱 분기
-- **네비게이션**: 모바일에서 햄버거 메뉴로 전환
 
 ## 🤝 기여하기
 
