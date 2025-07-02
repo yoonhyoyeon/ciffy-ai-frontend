@@ -1,10 +1,10 @@
 # Ciffy AI Frontend 🎓
 
+![Ciffy Banner](public/images/img_logo.png)
+
 > 🚀 **AI 기반 스마트 시간표 생성 및 학사관리 플랫폼**
 
 Ciffy는 학생들의 선호도와 졸업요건을 분석하여 최적의 시간표를 자동으로 생성하고, 강의 후기 및 졸업요건 분석 기능을 제공하는 통합 학사관리 플랫폼입니다.
-
-![Ciffy Banner](public/images/img_logo.png)
 
 ## ✨ 주요 기능
 
