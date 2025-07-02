@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "find:unused": "next-unused"
   },
   "dependencies": {
     "@svgr/webpack": "^8.1.0",

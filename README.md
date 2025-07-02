@@ -20,14 +20,14 @@ Ciffy는 학생들의 선호도와 졸업요건을 분석하여 최적의 시간
 - **후기 작성**: Server Actions를 활용한 실시간 후기 등록
 
 ### 🎯 졸업요건 분석
-- **실시간 분석**: 기이수 성적표 업로드를 통한 졸업요건 자동 분석
-- **진도 시각화**: 원형 진행바와 상세 통계로 졸업 진도 확인
+- **실시간 분석**: 기이수 성적표 업로드(Excel)를 통한 졸업요건 자동 분석
+- **진도 시각화**: 프로그래스바와 상세 과목 조회로 졸업 진도 확인
 - **트랙별 관리**: 전공별 세부 트랙 이수 현황 관리
 
 ### 👤 개인화 마이페이지
 - **학습 대시보드**: 개인 학습 현황 및 통계 확인
 - **시간표 관리**: 저장된 시간표 조회 및 관리
-- **기이수 과목**: 수강 완료 과목 리스트 및 성적 관리
+- **기이수 과목**: 수강 완료 과목 리스트 확인
 
 ## 🛠️ 기술 스택
 
@@ -94,8 +94,13 @@ yarn install
 
 3. **환경 변수 설정**
 ```bash
-# .env.local 파일 생성
-NEXT_PUBLIC_API_URL=http://localhost:8080
+# .env.local 파일 생성 후 아래 내용 추가
+NEXT_PUBLIC_API_URL=your_backend_api_url_here
+
+# 개발 환경 예시:
+# NEXT_PUBLIC_API_URL=http://localhost:8080
+# 프로덕션 환경 예시:
+# NEXT_PUBLIC_API_URL=https://api.your-domain.com
 ```
 
 4. **개발 서버 실행**
@@ -117,7 +122,6 @@ npm run dev          # 개발 서버 실행 (Turbopack 사용)
 npm run build        # 프로덕션 빌드
 npm run start        # 프로덕션 서버 실행
 npm run lint         # ESLint 검사
-npm run find:unused  # 미사용 파일 검색
 ```
 
 ## 🎨 디자인 시스템
@@ -137,9 +141,24 @@ npm run find:unused  # 미사용 파일 검색
 ## 🔗 API 통합
 
 ### 백엔드 연동
-- **프록시 설정**: `/api/*` 요청을 `http://localhost:8080/api/*`로 리다이렉트
+- **프록시 설정**: `/api/*` 요청을 설정된 백엔드 서버로 리다이렉트
 - **인증**: JWT 토큰 기반 인증 시스템
 - **API 서비스**: `src/service/`에서 API 호출 관리
+
+### 환경 변수
+```bash
+# .env.local (Git에서 제외됨)
+NEXT_PUBLIC_API_URL=your_backend_api_url
+
+# 추가 환경 변수가 필요한 경우:
+# NEXT_PUBLIC_SOCKET_URL=your_socket_server_url
+# API_SECRET_KEY=your_secret_key
+```
+
+⚠️ **보안 주의사항**: 
+- `.env.local` 파일은 Git에 포함되지 않습니다
+- 실제 서버 주소나 비밀 키는 공개 저장소에 노출하지 마세요
+- `NEXT_PUBLIC_` 접두사가 있는 변수는 클라이언트에 노출됩니다
 
 ### 주요 API 엔드포인트
 - `/api/auth/*` - 인증 관련
