@@ -38,6 +38,7 @@ const DUMMY_GRADUATION_DATA = {
 
 const TranscriptUploadPopup = ({ onUpload, onCancel }) => {
   const fileInputRef = useRef(null);
+  const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState('');
   const [dragActive, setDragActive] = useState(false);
   const [error, setError] = useState('');
@@ -45,30 +46,22 @@ const TranscriptUploadPopup = ({ onUpload, onCancel }) => {
   const { fetchGraduation, fetchTakenLectures } = useGraduationStore();
   
   const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      if (!isExcelFile(file)) {
-        setFileName('');
-        setError('엑셀 파일(.xlsx, .xls)만 업로드할 수 있습니다.');
-      } else {
-        setFileName(file.name);
-        setError('');
-      }
+    const selectedFile = e.target.files[0];
+    if (selectedFile) {
+      setFile(selectedFile);
+      setFileName(selectedFile.name);
+      setError('');
     }
   };
 
   const handleDrop = (e) => {
     e.preventDefault();
     setDragActive(false);
-    const file = e.dataTransfer.files[0];
-    if (file) {
-      if (!isExcelFile(file)) {
-        setFileName('');
-        setError('엑셀 파일(.xlsx, .xls)만 업로드할 수 있습니다.');
-      } else {
-        setFileName(file.name);
-        setError('');
-      }
+    const droppedFile = e.dataTransfer.files[0];
+    if (droppedFile) {
+      setFile(droppedFile);
+      setFileName(droppedFile.name);
+      setError('');
     }
   };
 
@@ -82,8 +75,11 @@ const TranscriptUploadPopup = ({ onUpload, onCancel }) => {
     setDragActive(false);
   };
 
-  const handleUpload = async (e) => {
-    const file = fileInputRef.current.files[0];
+  const handleUpload = async () => {
+    if (!file) {
+      alert('파일을 선택해주세요.');
+      return;
+    }
     const formData = new FormData();
     formData.append('file', file);
 

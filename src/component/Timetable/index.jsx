@@ -102,7 +102,7 @@ const Timetable = ({data, isHoverable = false}) => {
             <div className={styles.online_wrap}>
                 {
                     lecturesByDay.online?.map((v, i) => (
-                        <span key={i}>{ v.title }</span>
+                        <span key={i}>{v.name || v.title}</span>
                     ))
                 }
             </div>

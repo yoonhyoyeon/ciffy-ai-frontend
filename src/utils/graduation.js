@@ -68,3 +68,27 @@ export function convertTakenLecturesToList(takenLectures) {
     });
     return list;
 }
+
+export function groupLecturesByDay(lectures) {
+  const days = ['mon', 'tue', 'wed', 'thu', 'fri'];
+  const result = { online: [] };
+
+  days.forEach(day => {
+    result[day] = [];
+  });
+
+  lectures.forEach(lecture => {
+    // time이 없거나 빈 값이면 온라인 강의로 분류
+    if (!lecture.time || lecture.type === 'online') {
+      result.online.push(lecture);
+    } else if (lecture.day) {
+      lecture.day.forEach(day => {
+        if (days.includes(day)) {
+          result[day].push(lecture);
+        }
+      });
+    }
+  });
+
+  return result;
+}
