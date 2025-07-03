@@ -1,6 +1,7 @@
 # Ciffy AI Frontend 🎓
 
-![Ciffy Banner](public/images/img_logo.png)
+<img src="public/images/img_logo.png" width="400" />
+
 
 > 🚀 **AI 기반 스마트 시간표 생성 및 학사관리 플랫폼**
 
