@@ -4,6 +4,20 @@
 
 > 🚀 **AI 기반 스마트 시간표 생성 및 학사관리 플랫폼**
 
+---
+
+## 🏆 수상 내역
+
+CIFFY는 **실용성과 혁신성에서 높은 평가를 받아**, 아래와 같은 대학교 공식 행사에서 **대상(1위)**을 수상했습니다.
+
+- 🥇 **2024 세종대학교 소프트웨어융합대학 학술제 구현 트랙 대상 (1위)**  
+  _AI 기반 대학교 시간표 추천 서비스 (CIFFY)_ (2024.12.04)
+
+- 🥇 **2024 세종대학교 컴퓨터공학과 학술제 대상 (1위)**  
+  _AI 기반 대학교 시간표 추천 서비스 (CIFFY)_ (2024.12.23)
+
+---
+
 Ciffy는 학생들의 선호도와 졸업요건을 분석하여 최적의 시간표를 자동으로 생성하고, 강의 후기 및 졸업요건 분석 기능을 제공하는 통합 학사관리 플랫폼입니다.
 
 ## ✨ 주요 기능
@@ -48,147 +62,3 @@ Ciffy는 학생들의 선호도와 졸업요건을 분석하여 최적의 시간
 - **Font**: Pretendard, GmarketSans
 
 ## 📁 프로젝트 구조
-
-```
-src/
-├── app/                    # Next.js App Router 페이지
-│   ├── auth/              # 인증 관련 페이지
-│   ├── graduation/        # 졸업요건 분석 페이지
-│   ├── lecture/           # 강의 후기 페이지
-│   ├── mypage/           # 마이페이지
-│   ├── timetable/        # 시간표 생성 페이지
-│   └── @modal/           # 모달 페이지
-├── component/             # 공용 컴포넌트
-│   ├── Button/           # 버튼 컴포넌트
-│   ├── Navigation/       # 네비게이션
-│   ├── Timetable/        # 시간표 컴포넌트
-│   └── TimeSelector/     # 시간 선택기
-├── container/            # 페이지별 컨테이너 컴포넌트
-├── store/                # Zustand 상태 관리
-├── service/              # API 서비스
-├── actions/              # Server Actions
-├── utils/                # 유틸리티 함수
-└── styles/               # 전역 스타일
-```
-
-## 🚀 시작하기
-
-### 필수 요구사항
-- Node.js 18+
-- npm 또는 yarn
-
-### 설치 및 실행
-
-1. **저장소 클론**
-```bash
-git clone [repository-url]
-cd ciffy-ai-frontend
-```
-
-2. **의존성 설치**
-```bash
-npm install
-# 또는
-yarn install
-```
-
-3. **환경 변수 설정**
-```bash
-# .env.local 파일 생성 후 아래 내용 추가
-NEXT_PUBLIC_API_URL=your_backend_api_url_here
-
-# 개발 환경 예시:
-# NEXT_PUBLIC_API_URL=http://localhost:8080
-# 프로덕션 환경 예시:
-# NEXT_PUBLIC_API_URL=https://api.your-domain.com
-```
-
-4. **개발 서버 실행**
-```bash
-npm run dev
-# 또는
-yarn dev
-```
-
-5. **브라우저에서 확인**
-```
-http://localhost:3000
-```
-
-## 📋 사용 가능한 스크립트
-
-```bash
-npm run dev          # 개발 서버 실행 (Turbopack 사용)
-npm run build        # 프로덕션 빌드
-npm run start        # 프로덕션 서버 실행
-npm run lint         # ESLint 검사
-```
-
-## 🎨 디자인 시스템
-
-### 컴포넌트 규칙
-- **폴더 구조**: 각 컴포넌트는 개별 폴더에 `index.jsx`와 `index.module.css`로 구성
-- **스타일링**: CSS Module만 사용 (TypeScript, SCSS 사용 안함)
-- **네이밍**: 카멜케이스(camelCase) 사용
-- **Import**: 지역 컴포넌트는 상대경로, 공용 컴포넌트는 `@/` 별칭 사용
-
-### 색상 시스템
-- Primary Blue: `var(--color-blue-2)`
-- Secondary Blue: `var(--color-blue-1)`
-- Background: `var(--color-bg)`
-- White: `var(--color-white)`
-
-## 🔗 API 통합
-
-### 백엔드 연동
-- **프록시 설정**: `/api/*` 요청을 설정된 백엔드 서버로 리다이렉트
-- **인증**: JWT 토큰 기반 인증 시스템
-- **API 서비스**: `src/service/`에서 API 호출 관리
-
-### 환경 변수
-```bash
-# .env.local (Git에서 제외됨)
-NEXT_PUBLIC_API_URL=your_backend_api_url
-
-# 추가 환경 변수가 필요한 경우:
-# NEXT_PUBLIC_SOCKET_URL=your_socket_server_url
-# API_SECRET_KEY=your_secret_key
-```
-
-⚠️ **보안 주의사항**: 
-- `.env.local` 파일은 Git에 포함되지 않습니다
-- 실제 서버 주소나 비밀 키는 공개 저장소에 노출하지 마세요
-- `NEXT_PUBLIC_` 접두사가 있는 변수는 클라이언트에 노출됩니다
-
-### 주요 API 엔드포인트
-- `/api/auth/*` - 인증 관련
-- `/api/timetables/*` - 시간표 생성/관리
-- `/api/lectures/*` - 강의 정보
-- `/api/reviews/*` - 강의 후기
-- `/api/graduation/*` - 졸업요건 분석
-
-## 🔒 인증 시스템
-
-- **토큰 관리**: localStorage와 쿠키 이중 저장
-- **라우트 보호**: Middleware를 통한 인증 필요 페이지 보호
-- **자동 갱신**: 토큰 자동 갱신 시스템
-
-## 🤝 기여하기
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 라이선스
-
-이 프로젝트는 [MIT 라이선스](LICENSE) 하에 배포됩니다.
-
-## 📞 문의
-
-프로젝트 관련 문의사항이 있으시면 언제든 연락주세요.
-
----
-
-**Made with ❤️ by Ciffy Team**
