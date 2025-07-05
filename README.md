@@ -95,7 +95,7 @@ src/
 
 ### 컴포넌트 규칙
 - **폴더 구조**: 각 컴포넌트는 개별 폴더에 `index.jsx`와 `index.module.css`로 구성
-- **스타일링**: CSS Module만 사용 (TypeScript, SCSS 사용 안함)
+- **스타일링**: CSS Module
 - **네이밍**: 카멜케이스(camelCase) 사용
 - **Import**: 지역 컴포넌트는 상대경로, 공용 컴포넌트는 `@/` 별칭 사용
 
