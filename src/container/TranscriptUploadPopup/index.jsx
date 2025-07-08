@@ -50,7 +50,7 @@ const TranscriptUploadPopup = ({ onUpload, onCancel }) => {
     if (selectedFile) {
       setFile(selectedFile);
       setFileName(selectedFile.name);
-      setError('');
+        setError('');
     }
   };
 
@@ -61,7 +61,7 @@ const TranscriptUploadPopup = ({ onUpload, onCancel }) => {
     if (droppedFile) {
       setFile(droppedFile);
       setFileName(droppedFile.name);
-      setError('');
+        setError('');
     }
   };
 

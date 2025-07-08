@@ -1,6 +1,6 @@
 // src/utils/timetable.js
 
-// 요일 한글 → 영문 변환
+// 요일 한글 -> 영문 변환
 const dayMap = {
   '월': 'mon',
   '화': 'tue',
@@ -24,29 +24,28 @@ export function parseLectureTime(timeStr) {
 
 // API 응답 → timetableList 변환
 export function convertApiTimetablesToList(apiTimetables) {
+  console.log('apiTimetables', apiTimetables);
   if (!Array.isArray(apiTimetables)) return [];
   return apiTimetables.map((timetable, idx) => {
-    // majors, liberals 등 여러 타입의 강의가 있을 수 있음
     const lectures = [];
     // 전공, 교양 등 모든 강의 배열 합치기
     ['majors', 'liberals', 'preRegistered'].forEach(type => {
-      if (Array.isArray(timetable[type])) {
-        timetable[type].forEach(lec => {
-          // 시간 정보 파싱
-          const { day, startHour, endHour } = parseLectureTime(lec.time);
-          lectures.push({
-            id: lec.id || lec.courseId || `${type}-${Math.random()}`,
-            name: lec.course?.name || lec.name || '',
-            professor: lec.professor || '',
-            room: lec.room || '',
-            day,
-            startHour,
-            endHour,
-            type: lec.type || '',
-            credits: lec.course?.credits || lec.credits || undefined
-          });
+      timetable[type].forEach(lec => {
+        // 시간 정보 파싱
+        console.log('lec', lec);
+        const { day, startHour, endHour } = parseLectureTime(lec.time);
+        lectures.push({
+          id: lec.id,
+          name: lec.course?.name || '',
+          professor: lec.professor || '',
+          room: lec.room || '',
+          day,
+          startHour,
+          endHour,
+          type: lec.type || '',
+          credits: lec.course?.credits || undefined
         });
-      }
+      });
     });
     return {
       id: idx + 1,

@@ -44,8 +44,8 @@ export function convertGraduationData(graduation) {
   // 전체 학점
   const totalCurrent = Object.values(graduation.completedCredits).reduce((a, b) => a + b, 0);
   const totalRequired = graduation.requiredCredits['졸업학점'] || 0;
-
-  return {
+    
+    return {
     total: { current: totalCurrent, total: totalRequired },
     requirements: [
       { title: '전공', items: majorItems },
