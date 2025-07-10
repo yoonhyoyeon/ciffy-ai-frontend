@@ -47,7 +47,7 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: 'http://localhost:8080/api/:path*', // 실제 백엔드 주소로 변경
+        destination: `${process.env.NEXT_PUBLIC_API_URL}/api/:path*`, // 실제 백엔드 주소로 변경
       },
     ];
   },
