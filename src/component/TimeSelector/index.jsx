@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./index.module.css";
 import cx from "classnames";
 
@@ -8,17 +8,6 @@ function formatTime(blockIdx, startHour) {
   const hour = startHour + Math.floor(blockIdx / 2);
   const min = (blockIdx % 2) * 30;
   return `${hour.toString().padStart(2, "0")}:${min === 0 ? "00" : "30"}`;
-}
-
-function convertSelectedRanges(selectedRanges, startHour = 9) {
-  return selectedRanges.map(range => {
-    const [start, end] = [range.startBlock, range.endBlock].sort((a, b) => a - b);
-    return {
-      day: DAYS[range.dayIndex],
-      start: formatTime(start, startHour),
-      end: formatTime(end + 1, startHour), // end+1로 끝나는 시각(반오픈구간) 표현
-    };
-  });
 }
 
 // 선택된 시간대를 "요일 HH:MM~HH:MM" 포맷으로 변환하는 함수
@@ -76,11 +65,6 @@ function isOverlapping(newRange, ranges) {
         return start <= newEnd && end >= newStart;
     });
 }
-
-function isTempOverlapping(tempRange, ranges) {
-  if (!tempRange) return false;
-  return isOverlapping(tempRange, ranges);
-}
 function isCellTempOverlap(dayIdx, blockIdx, tempRange, ranges) {
     if (!tempRange) return false;
     if (!isInRange(dayIdx, blockIdx, tempRange)) return false;
@@ -133,8 +117,8 @@ export default function TimeSelector({
     }
   };
 
-  const handleCellMouseOver = (_, blockIdx) => {
-    if (isSelecting && tempRange) {
+  const handleCellMouseOver = (blockIdx) => {
+    if (isSelecting) {
       setTempRange({ ...tempRange, endBlock: blockIdx });
     }
   };
@@ -161,19 +145,17 @@ export default function TimeSelector({
               {DAYS.map((_, dayIdx) => (
                 <td
                     key={dayIdx}
-                    className={[
-                    styles.cell,
-                    isInAnyRange(dayIdx, blockIdx, selectedRanges) && styles.selected,
-                    getSelectedClass(dayIdx, blockIdx, selectedRanges),
-                    isInRange(dayIdx, blockIdx, tempRange) &&
-                        (isCellTempOverlap(dayIdx, blockIdx, tempRange, selectedRanges)
-                        ? styles.tempOverlap
-                        : styles.temp),
-                    ]
-                    .filter(Boolean)
-                    .join(" ")}
+                    className={cx(
+                      styles.cell,
+                      {
+                        [styles.selected]: isInAnyRange(dayIdx, blockIdx, selectedRanges),
+                        [styles.tempOverlap]: isInRange(dayIdx, blockIdx, tempRange) && isCellTempOverlap(dayIdx, blockIdx, tempRange, selectedRanges),
+                        [styles.temp]: isInRange(dayIdx, blockIdx, tempRange) && !isCellTempOverlap(dayIdx, blockIdx, tempRange, selectedRanges)
+                      },
+                      getSelectedClass(dayIdx, blockIdx, selectedRanges)
+                    )}
                     onClick={() => handleCellClick(dayIdx, blockIdx)}
-                    onMouseOver={() => handleCellMouseOver(dayIdx, blockIdx)}
+                    onMouseOver={() => handleCellMouseOver(blockIdx)}
                 />
               ))}
             </tr>
@@ -184,5 +166,4 @@ export default function TimeSelector({
   );
 }
 
-// 함수들을 export해서 다른 컴포넌트에서 사용할 수 있도록 함
 export { convertToUnavailableTimesFormat };

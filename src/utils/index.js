@@ -20,14 +20,15 @@ export function groupLecturesByDay(lectures) {
 }
 
 export async function authFetch(url, options = {}) {
-    // localStorage에서 access_token 가져오기 (클라이언트)
+    let finalUrl = url;
     let accessToken = null;
     if (typeof window !== 'undefined') {
+        // localStorage에서 access_token 가져오기 (클라이언트)
         accessToken = localStorage.getItem('access_token');
     }
-    
-    // 쿠키에서 access_token 가져오기 (서버사이드)
-    if (!accessToken) {
+    else {
+        // 쿠키에서 access_token 가져오기 + 절대 URL (서버사이드)
+        finalUrl = process.env.NEXT_PUBLIC_API_URL + url;
         try {
             const { cookies } = await import('next/headers');
             const cookieStore = await cookies();
@@ -36,10 +37,10 @@ export async function authFetch(url, options = {}) {
             console.error('쿠키 접근 실패:', error);
         }
     }
-    
-    const headers = { ...(options.headers || {}) };
 
     // Authorization 헤더에 토큰 추가
+    const headers = { ...(options.headers || {}) };
+
     if (accessToken) {
         headers['Authorization'] = accessToken.startsWith('Bearer ')
             ? accessToken
@@ -51,7 +52,7 @@ export async function authFetch(url, options = {}) {
         headers['Content-Type'] = 'application/json';
     }
     
-    const response = await fetch(url, {
+    const response = await fetch(finalUrl, {
         ...options,
         headers
     });
