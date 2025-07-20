@@ -37,7 +37,7 @@
   border-bottom: 1px solid rgba(245, 243, 241, 0.80);
   background: #fff;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: all 0.15s ease;
   min-width: 40px;
   height: 22.5px;
   position: relative;
@@ -72,4 +72,9 @@
 }
 .timetableWrapper .cell.tempOverlap:hover {
   background: #3243A1;
+}
+
+/* 호버된 범위의 모든 셀에 빨간색 배경 */
+.timetableWrapper .hoveredRange {
+  opacity: 0.5;
 }
