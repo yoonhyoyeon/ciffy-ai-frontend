@@ -8,7 +8,6 @@ import {
   isInAnyRange,
   isOverlapping,
   getBorderStyleClass,
-  convertToUnavailableTimesFormat,
 } from "@/utils/timeSelector";
 
 export default function TimeSelector({
