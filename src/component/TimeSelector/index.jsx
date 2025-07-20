@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import styles from "./index.module.css";
 import cx from "classnames";
 import {
@@ -18,8 +18,8 @@ export default function TimeSelector({
   answer,
   question_id
 }) {
-  // 시간 블록 생성
-  const timeBlocks = getTimeBlocks(startHour, endHour);
+  // 시간 블록 생성 (30분 단위) - useMemo로 캐싱
+  const timeBlocks = useMemo(() => getTimeBlocks(startHour, endHour), [startHour, endHour]);
   
   const [isSelecting, setIsSelecting] = useState(false); // 선택 중인 지 여부
   const [tempRange, setTempRange] = useState(null); // 임시 선택 범위
