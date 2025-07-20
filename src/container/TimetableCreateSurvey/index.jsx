@@ -6,7 +6,7 @@ import styles from './index.module.css';
 import { useState } from "react";
 import { FormQ1, FormQ2, FormQ3, FormQ4, FormQ5, FormQ6, FormQ7, FormQ8, FormQ9, FormQ10 } from "./component/QuestionForms";
 import { useNavigationGuard } from "next-navigation-guard";
-import { convertToUnavailableTimesFormat } from "@/component/TimeSelector";
+import { convertToUnavailableTimesFormat } from "@/utils/timeSelector";
 import { useTimetableStore } from "@/store/timetable";
 import { useRouter } from "next/navigation";
 
